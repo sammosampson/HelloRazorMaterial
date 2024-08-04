@@ -14,7 +14,7 @@ function hookup_mdc() {
         mdc.textField.MDCTextField.attachTo(textField);
     }
 
-    const drawers = document.querySelectorAll('.mdl-drawer');
+    const drawers = document.querySelectorAll('.mdl-drawer, .mdc-deprecated-list');
     for (const drawer of drawers) {
         mdc.drawer.MDCDrawer.attachTo(drawer);
     }
