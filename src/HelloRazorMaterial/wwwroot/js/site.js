@@ -13,6 +13,12 @@ function hookup_mdc() {
     for (const textField of textFields) {
         mdc.textField.MDCTextField.attachTo(textField);
     }
+
+    const drawers = document.querySelectorAll('.mdl-drawer');
+    for (const drawer of drawers) {
+        mdc.drawer.MDCDrawer.attachTo(drawer);
+    }
+    
 }
 
 hookup_mdc();
