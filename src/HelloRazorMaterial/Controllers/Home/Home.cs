@@ -1,4 +1,6 @@
-﻿namespace HelloRazorMaterial.Controllers.Home
+﻿using HelloRazorMaterial.Controllers.Shared;
+
+namespace HelloRazorMaterial.Controllers.Home
 {
     using Microsoft.AspNetCore.Mvc;
 
@@ -6,7 +8,7 @@
     {
         public IActionResult Index()
         {
-            return View();
+            return View(new HomeModel { Items = MenuItemsBuilder.BuildWithSelectedName(nameof(Home)) });
         }
     }
 }

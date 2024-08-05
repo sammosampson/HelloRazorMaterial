@@ -1,4 +1,6 @@
-﻿namespace HelloRazorMaterial.Controllers.Home
+﻿using HelloRazorMaterial.Controllers.Shared;
+
+namespace HelloRazorMaterial.Controllers.Charts
 {
     using Microsoft.AspNetCore.Mvc;
 
@@ -6,7 +8,7 @@
     {
         public IActionResult Index()
         {
-            return View();
+            return View(new ChartsModel { Items = MenuItemsBuilder.BuildWithSelectedName(nameof(Charts)) });
         }
     }
 }
