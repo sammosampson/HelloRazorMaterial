@@ -11,23 +11,6 @@
 <body translate="no">
 <script src="https://unpkg.com/htmx.org@2.0.1"></script>
 
-<aside class="mdc-drawer">
-    <div class="mdc-drawer__content">
-        <nav class="mdc-deprecated-list">
-            <a class="mdc-deprecated-list-item mdc-deprecated-list-item--activated" href="/" aria-current="page">
-                <span class="mdc-deprecated-list-item__ripple"></span>
-                <i class="material-icons mdc-deprecated-list-item__graphic" aria-hidden="true">home</i>
-                <span class="mdc-deprecated-list-item__text">Home</span>
-            </a>
-            <a class="mdc-deprecated-list-item" href="/charts">
-                <span class="mdc-deprecated-list-item__ripple"></span>
-                <i class="material-icons mdc-deprecated-list-item__graphic" aria-hidden="true">send</i>
-                <span class="mdc-deprecated-list-item__text">Charts</span>
-            </a>
-        </nav>
-    </div>
-</aside>
-
 <div id="main" hx-boost="true">
     @RenderBody()
     @await RenderSectionAsync("Scripts", required: false)
