@@ -1,4 +1,5 @@
-﻿@{
+﻿@using Microsoft.AspNetCore.Mvc.TagHelpers
+@{
     IgnoreBody();
 }
 
@@ -11,11 +12,12 @@
     <link rel="stylesheet" href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/drawer-dialog.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/@(nameof(HelloRazorMaterial)).styles.css" /></head>
 <body translate="no">
 <script src="https://unpkg.com/htmx.org@2.0.1"></script>
 
-<aside class="mdc-drawer mdc-drawer--modal">
+    <aside class="mdc-drawer mdc-drawer--modal">
     <div class="mdc-drawer__content">
         <nav class="mdc-list">
             <a class="mdc-deprecated-list-item mdc-deprecated-list-item--activated" href="#" tabindex="0" aria-current="page">
