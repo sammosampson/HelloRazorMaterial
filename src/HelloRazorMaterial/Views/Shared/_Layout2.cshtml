@@ -1,8 +1,4 @@
 ﻿@using Microsoft.AspNetCore.Mvc.TagHelpers
-@{
-    IgnoreBody();
-}
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -49,9 +45,8 @@
         </div>
     </header>
 
-    <main class="mdc-top-app-bar--fixed-adjust">
-        Content
-    </main>
+    @RenderBody()
+    @await RenderSectionAsync("Scripts", required: false)
 
 </div>
 <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
