@@ -14,11 +14,11 @@ function hookup_mdc() {
         mdc.textField.MDCTextField.attachTo(textField);
     }
 
-    const drawers = document.querySelectorAll('.mdl-drawer .mdc-list');
-    for (const drawer of drawers) {
-        mdc.drawer.MDCDrawer.attachTo(drawer);
-    }
-    
+    const drawer = mdc.drawer.MDCDrawer.attachTo(document.querySelector('.mdc-drawer'));
+    const topAppBar = mdc.topAppBar.MDCTopAppBar.attachTo(document.querySelector('.mdc-top-app-bar'));
+    topAppBar.listen('MDCTopAppBar:nav', () => {
+        drawer.open = !drawer.open;
+    });
 }
 
 hookup_mdc();
