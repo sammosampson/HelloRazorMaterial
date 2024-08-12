@@ -1,6 +1,4 @@
-﻿
-
-function hookup_mdc() {
+﻿function hookup_mdc() {
     const buttons = document.querySelectorAll('.mdc-button');
     for (const button of buttons) {
         mdc.ripple.MDCRipple.attachTo(button);
@@ -16,6 +14,7 @@ function hookup_mdc() {
     topAppBar.listen('MDCTopAppBar:nav', () => {
         drawer.open = !drawer.open;
     });
+}
 
 function hookup_mdc_after_htmx_request() {
     document.addEventListener('htmx:afterRequest', function (evt) {
