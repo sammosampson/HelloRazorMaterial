@@ -6,12 +6,4 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
-  <ItemGroup>
-    <Folder Include="wwwroot\lib\" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <AdditionalFiles Include="Views\DrawerDialog\Index.cshtml" />
-  </ItemGroup>
-
 </Project>
