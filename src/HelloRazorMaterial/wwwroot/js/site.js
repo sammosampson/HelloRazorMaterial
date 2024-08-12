@@ -1,6 +1,4 @@
-﻿
-
-function hookup_mdc() {
+﻿function hookup_mdc() {
     const buttons = document.querySelectorAll('.mdc-button');
     for (const button of buttons) {
         mdc.ripple.MDCRipple.attachTo(button);
@@ -11,10 +9,11 @@ function hookup_mdc() {
         mdc.textField.MDCTextField.attachTo(textField);
     }
 
-    const drawers = document.querySelectorAll('.mdl-drawer, .mdc-deprecated-list');
-    for (const drawer of drawers) {
-        mdc.drawer.MDCDrawer.attachTo(drawer);
-    }
+    const drawer = mdc.drawer.MDCDrawer.attachTo(document.querySelector('.mdc-drawer'));
+    const topAppBar = mdc.topAppBar.MDCTopAppBar.attachTo(document.querySelector('.mdc-top-app-bar'));
+    topAppBar.listen('MDCTopAppBar:nav', () => {
+        drawer.open = !drawer.open;
+    });
 }
 
 function hookup_mdc_after_htmx_request() {
