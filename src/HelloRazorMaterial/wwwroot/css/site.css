@@ -29,7 +29,7 @@
 form, section {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: left;
     align-items: center;
     margin-top: 32px;
 }
