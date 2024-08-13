@@ -60,8 +60,24 @@ function hookup_mdc_appbar_drawer() {
     });
 }
 
+function hookup_mdc_buttons() {
+    const buttons = document.querySelectorAll('.mdc-button');
+    for (const button of buttons) {
+        mdc.ripple.MDCRipple.attachTo(button);
+    }
+}
+
+function hookup_mdc_text_fields() {
+    const textFields = document.querySelectorAll('.mdc-text-field');
+    for (const textField of textFields) {
+        mdc.textField.MDCTextField.attachTo(textField);
+    }
+}
+
 function hookup_mdc() {
-   hookup_mdc_appbar_drawer();
+    hookup_mdc_appbar_drawer();
+    hookup_mdc_buttons();
+    hookup_mdc_text_fields();
 }
 
 function hookup_mdc_after_htmx_request() {
