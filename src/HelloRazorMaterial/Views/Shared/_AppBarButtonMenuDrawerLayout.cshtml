@@ -8,5 +8,6 @@
     <partial name="~/Views/Shared/_AppBar.cshtml" />
     <main class="mdc-top-app-bar--fixed-adjust">
         @RenderBody()
+        @await RenderSectionAsync("Scripts", required: false)
     </main>
 </div>
