@@ -26,7 +26,8 @@
     --mdc-theme-text-icon-on-dark: rgba(255, 255, 255, 0.5);    
     */
 }
-form, section {
+
+form {
     display: flex;
     flex-direction: column;
     justify-content: center;

@@ -10,11 +10,10 @@
             return new List<MenuItem>()
             { 
                 CreateMenuItem(nameof(Home.Home), "home", nameOfSelectedItem),
-                CreateMenuItem(nameof(Charts.Charts), "layers", nameOfSelectedItem),
-                CreateMenuItem(nameof(Fields.Fields), "library_add_check", nameOfSelectedItem),
+                CreateMenuItem(nameof(Charts.Charts), "trending_up", nameOfSelectedItem),
+                CreateMenuItem(nameof(Fields.Fields), "description", nameOfSelectedItem),
                 CreateMenuItem(nameof(Buttons.Buttons), "description", nameOfSelectedItem),
-                CreateMenuItem(nameof(Text.Text), "trending_up", nameOfSelectedItem),
-                CreateMenuItem(nameof(DrawerDialog.DrawerDialog), "menu", nameOfSelectedItem)
+                CreateMenuItem(nameof(Text.Text), "description", nameOfSelectedItem)
             };
         }
 

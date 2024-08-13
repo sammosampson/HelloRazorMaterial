@@ -1,7 +1,5 @@
 ﻿@model ChartsModel
-<partial name="~/Views/Shared/_Menu.cshtml" />
 
-<section>
 <div class="mdc-layout-grid">
     <div class="mdc-layout-grid__inner">
         <div class="mdc-layout-grid__cell">
@@ -9,14 +7,21 @@
                 <canvas id="doughnut"></canvas>
             </div>
         </div>
-        <div class="mdc-layout-grid__cell"></div>
-        <div class="mdc-layout-grid__cell"></div>
+        <div class="mdc-layout-grid__cell">
+            <div class="mdc-card demo-card">
+                <canvas id="pie"></canvas>
+            </div>
+        </div>
+        <div class="mdc-layout-grid__cell">
+            <div class="mdc-card demo-card">
+            </div>
+        </div>
     </div>
 </div>
-</section>
 
 @section Scripts {
     <script>
         doughnut_chart('doughnut');
+        pie_chart('pie');
     </script>
 }
