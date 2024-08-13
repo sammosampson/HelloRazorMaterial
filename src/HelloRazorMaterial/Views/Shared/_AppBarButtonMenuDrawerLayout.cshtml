@@ -1,0 +1,12 @@
+﻿@{
+    Layout = "_Layout";
+}
+<partial name="~/Views/Shared/_MenuDrawer.cshtml" />
+<partial name="~/Views/Shared/_MenuDrawerScrim.cshtml" />
+
+<div class="mdc-drawer-app-content">
+    <partial name="~/Views/Shared/_AppBar.cshtml" />
+    <main class="mdc-top-app-bar--fixed-adjust">
+        @RenderBody()
+    </main>
+</div>

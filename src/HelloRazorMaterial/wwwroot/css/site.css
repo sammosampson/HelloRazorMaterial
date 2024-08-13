@@ -26,15 +26,3 @@
     --mdc-theme-text-icon-on-dark: rgba(255, 255, 255, 0.5);    
     */
 }
-form, section {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin-top: 32px;
-}
-
-.mdc-text-field {
-    margin-bottom: 24px;
-    flex-shrink: 0;
-}
