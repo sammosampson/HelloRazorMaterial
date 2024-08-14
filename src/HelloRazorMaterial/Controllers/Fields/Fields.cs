@@ -8,7 +8,7 @@ namespace HelloRazorMaterial.Controllers.Fields
     {
         public IActionResult Index()
         {
-            return View(new FieldsModel { Items = MenuItemsBuilder.BuildWithSelectedName(nameof(Fields)) });
+            return View(new MenuModel { Items = MenuItemsBuilder.BuildWithSelectedName(nameof(Fields)) });
         }
     }
 }

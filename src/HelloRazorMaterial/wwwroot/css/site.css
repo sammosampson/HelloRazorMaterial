@@ -26,3 +26,17 @@
     --mdc-theme-text-icon-on-dark: rgba(255, 255, 255, 0.5);    
     */
 }
+.centered-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.centered-box, .mdc-text-field {
+    margin-top: 1rem;
+}
+
+.centered-box, .mdc-button {
+    margin-top: 1rem;
+}
