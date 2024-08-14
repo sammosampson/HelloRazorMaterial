@@ -8,7 +8,7 @@ namespace HelloRazorMaterial.Controllers.Charts
     {
         public IActionResult Index()
         {
-            return View(new ChartsModel { Items = MenuItemsBuilder.BuildWithSelectedName(nameof(Charts)) });
+            return View(new MenuModel { Items = MenuItemsBuilder.BuildWithSelectedName(nameof(Charts)) });
         }
     }
 }

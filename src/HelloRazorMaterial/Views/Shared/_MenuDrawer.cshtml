@@ -6,10 +6,10 @@
             @foreach(MenuItem item in Model.Items)
             {
                 <a class="mdc-deprecated-list-item @((item.IsSelected ? "mdc-deprecated-list-item--activated" : ""))" href="/@item.Name" aria-current="page">
-                <span class="mdc-deprecated-list-item__ripple"></span>
-                <i class="material-icons mdc-deprecated-list-item__graphic" aria-hidden="true">@item.Icon</i>
-                    <span class="mdc-deprecated-list-item__text">@item.Name</span>
-            </a>
+                    <span class="mdc-deprecated-list-item__ripple"></span>
+                    <i class="material-icons mdc-deprecated-list-item__graphic" aria-hidden="true">@item.Icon</i>
+                        <span class="mdc-deprecated-list-item__text">@item.Name</span>
+                </a>
             }
         </nav>
     </div>
