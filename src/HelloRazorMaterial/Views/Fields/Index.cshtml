@@ -1,17 +1,50 @@
-﻿@model FieldsModel
+﻿<div class="mdc-layout-grid">
+    <div class="mdc-layout-grid__inner">
 
-<form>
-    <label class="mdc-text-field mdc-text-field--filled">
-        <span class="mdc-text-field__ripple"></span>
-        <span class="mdc-floating-label" id="first-name-label">First name</span>
-        <input type="text" name="FirstName" class="mdc-text-field__input">
-        <span class="mdc-line-ripple"></span>
-    </label>
+        <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12">
+            <label class="mdc-text-field mdc-text-field--outlined">
+                <input type="text" id="first-name" class="mdc-text-field__input">
+                <span class="mdc-notched-outline">
+                    <span class="mdc-notched-outline__leading"></span>
+                    <span class="mdc-notched-outline__notch">
+                        <span class="mdc-floating-label" id="first-name-label">First Name</span>
+                    </span>
+                    <span class="mdc-notched-outline__trailing"></span>
+                </span>
+            </label>
+        </div>
 
-    <label class="mdc-text-field mdc-text-field--filled">
-        <span class="mdc-text-field__ripple"></span>
-        <span class="mdc-floating-label" id="last-name-label">Last name</span>
-        <input type="text" name="LastName" class="mdc-text-field__input">
-        <span class="mdc-line-ripple"></span>
-    </label>
-</form>
+        <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12">
+            <label class="mdc-text-field mdc-text-field--outlined">
+                <input type="text" id="last-name" class="mdc-text-field__input">
+                <span class="mdc-notched-outline">
+                    <span class="mdc-notched-outline__leading"></span>
+                    <span class="mdc-notched-outline__notch">
+                        <span class="mdc-floating-label" id="last-name-label">Last Name</span>
+                    </span>
+                    <span class="mdc-notched-outline__trailing"></span>
+                </span>
+            </label>
+        </div>
+
+        <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12">
+            <label class="mdc-text-field mdc-text-field--outlined">
+                <input type="email" id="email" class="mdc-text-field__input">
+                <span class="mdc-notched-outline">
+                    <span class="mdc-notched-outline__leading"></span>
+                    <span class="mdc-notched-outline__notch">
+                        <span class="mdc-floating-label" id="email-label">Email</span>
+                    </span>
+                    <span class="mdc-notched-outline__trailing"></span>
+                </span>
+            </label>
+        </div>
+
+        <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12">
+            <button class="mdc-button mdc-button--raised">
+                <span class="mdc-button__label">Submit</span>
+            </button>
+        </div>
+
+    </div>
+</div>
