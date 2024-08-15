@@ -53,7 +53,11 @@ function pie_chart(canvasId) {
 }
 
 function hookup_mdc_appbar_drawer() {
-    const drawer = mdc.drawer.MDCDrawer.attachTo(document.querySelector('.mdc-drawer'));
+    const drawerElement = document.querySelector('.mdc-drawer');
+    if (drawerElement === null) {
+        return;
+    }
+    const drawer = mdc.drawer.MDCDrawer.attachTo(drawerElement);
     const topAppBar = mdc.topAppBar.MDCTopAppBar.attachTo(document.querySelector('.mdc-top-app-bar'));
     topAppBar.listen('MDCTopAppBar:nav', () => {
         drawer.open = !drawer.open;

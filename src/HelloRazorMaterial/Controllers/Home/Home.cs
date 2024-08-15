@@ -1,9 +1,11 @@
-﻿using HelloRazorMaterial.Controllers.Shared;
-
+﻿
 namespace HelloRazorMaterial.Controllers.Home
 {
     using Microsoft.AspNetCore.Mvc;
+    using Microsoft.AspNetCore.Authorization;
+    using HelloRazorMaterial.Controllers.Shared;
 
+    [Authorize]
     public class Home : Controller
     {
         public IActionResult Index()
