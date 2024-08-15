@@ -13,8 +13,7 @@
                 CreateMenuItem(nameof(Charts.Charts), "trending_up", nameOfSelectedItem),
                 CreateMenuItem(nameof(Fields.Fields), "description", nameOfSelectedItem),
                 CreateMenuItem(nameof(Buttons.Buttons), "description", nameOfSelectedItem),
-                CreateMenuItem(nameof(Text.Text), "description", nameOfSelectedItem),
-                CreateMenuItem(nameof(Account.Account), "description", nameOfSelectedItem)
+                CreateMenuItem(nameof(Text.Text), "description", nameOfSelectedItem)
             };
         }
 

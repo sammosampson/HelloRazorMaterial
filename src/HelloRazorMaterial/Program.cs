@@ -1,10 +1,19 @@
-using Microsoft.AspNetCore.Authentication.Cookies;
-using Microsoft.AspNetCore.Identity;
+using HelloRazorMaterial.Abstractions;
+using HelloRazorMaterial.Controllers.Login;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+
+
+builder.Services.AddAuthentication(AuthorisationConstants.CookieAuth)
+    .AddCookie(AuthorisationConstants.CookieAuth, config =>
+    {
+        config.Cookie.Name = AuthorisationConstants.UserLoginCookie;
+        config.LoginPath = $"/{nameof(Login)}";
+    });
 
 var app = builder.Build();
 

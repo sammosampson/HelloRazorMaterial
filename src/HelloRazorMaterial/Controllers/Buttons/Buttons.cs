@@ -2,8 +2,10 @@
 
 namespace HelloRazorMaterial.Controllers.Buttons
 {
+    using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
 
+    [Authorize]
     public class Buttons : Controller
     {
         public IActionResult Index()

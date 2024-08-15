@@ -1,0 +1,11 @@
+﻿@{
+    Layout = "_Layout";
+}
+
+<div class="mdc-drawer-app-content">
+    <partial name="~/Views/Login/Shared/_LoginAppBar.cshtml" />
+    <main class="mdc-top-app-bar--fixed-adjust">
+        @RenderBody()
+        @await RenderSectionAsync("Scripts", required: false)
+    </main>
+</div>
