@@ -1,4 +1,5 @@
-﻿<div class="mdc-layout-grid">
+﻿@model ChartsModel
+<div class="mdc-layout-grid">
     <div class="mdc-layout-grid__inner">
         <div class="mdc-layout-grid__cell">
             <div class="mdc-card demo-card">
@@ -12,6 +13,12 @@
         </div>
         <div class="mdc-layout-grid__cell">
             <div class="mdc-card demo-card">
+                <canvas id="line"></canvas>
+            </div>
+        </div>
+        <div class="mdc-layout-grid__cell">
+            <div class="mdc-card demo-card">
+                <canvas id="bar"></canvas>
             </div>
         </div>
     </div>
@@ -19,7 +26,12 @@
 
 @section Scripts {
     <script>
-        doughnut_chart('doughnut');
-        pie_chart('pie');
+        const labels = @Html.Raw(Model.Labels.ToJson());
+        const colours = @Html.Raw(Model.Colours.ToJson());
+        const data = @Html.Raw(Model.Data.ToJson());
+        chart('pie', labels, colours, data);
+        chart('doughnut', labels, colours, data);
+        chart('line', labels, colours, data);
+        chart('bar', labels, colours, data);
     </script>
 }

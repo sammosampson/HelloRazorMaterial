@@ -10,7 +10,7 @@ namespace HelloRazorMaterial.Controllers.Home
     {
         public IActionResult Index()
         {
-            return View(new MenuModel { Items = MenuItemsBuilder.BuildWithSelectedName(nameof(Home)) });
+            return View(new MenuModel { ControllerName = nameof(Home) });
         }
     }
 }

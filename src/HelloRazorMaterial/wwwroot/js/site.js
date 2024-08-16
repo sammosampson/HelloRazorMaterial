@@ -1,53 +1,19 @@
-﻿function doughnut_chart(canvasId) {
-    const ctx = document.getElementById(canvasId);
+﻿
+function chart(type, labels, colours, dataItems) {
+    const ctx = document.getElementById(type);
 
     const data = {
-        labels: [
-            'Red',
-            'Blue',
-            'Yellow'
-        ],
+        labels: labels,
         datasets: [{
-            label: 'My First Dataset',
-            data: [300, 50, 100],
-            backgroundColor: [
-                'rgb(255, 99, 132)',
-                'rgb(54, 162, 235)',
-                'rgb(255, 205, 86)'
-            ],
+            label: 'Best colours',
+            data: dataItems,
+            backgroundColor: colours,
             hoverOffset: 4
         }]
     };
 
     new Chart(ctx, {
-        type: 'doughnut',
-        data: data,
-    });
-}
-
-function pie_chart(canvasId) {
-    const ctx = document.getElementById(canvasId);
-
-    const data = {
-        labels: [
-            'Red',
-            'Blue',
-            'Yellow'
-        ],
-        datasets: [{
-            label: 'My First Dataset',
-            data: [300, 50, 100],
-            backgroundColor: [
-                'rgb(255, 99, 132)',
-                'rgb(54, 162, 235)',
-                'rgb(255, 205, 86)'
-            ],
-            hoverOffset: 4
-        }]
-    };
-
-    new Chart(ctx, {
-        type: 'pie',
+        type: type,
         data: data,
     });
 }

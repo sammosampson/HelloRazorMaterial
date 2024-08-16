@@ -1,9 +1,30 @@
-﻿
-@model MenuModel
+﻿@model MenuModel
+@{
+
+    MenuItem CreateMenuItem(string name, string icon, string nameOfSelectedItem)
+    {
+        return new MenuItem
+        {
+            Name = name,
+            Icon = icon,
+            IsSelected = nameOfSelectedItem == name
+        };
+    }  
+
+    IEnumerable<MenuItem> items = new[]
+    {
+        CreateMenuItem(nameof(Home), "home", Model.ControllerName),
+        CreateMenuItem(nameof(Charts), "trending_up", Model.ControllerName),
+        CreateMenuItem(nameof(Fields), "description", Model.ControllerName),
+        CreateMenuItem(nameof(Buttons), "description", Model.ControllerName),
+        CreateMenuItem(nameof(Text), "description", Model.ControllerName)
+    }; 
+}
+
 <aside class="mdc-drawer mdc-drawer--modal">
     <div class="mdc-drawer__content">
         <nav class="mdc-deprecated-list">
-            @foreach(MenuItem item in Model.Items)
+            @foreach (MenuItem item in items)
             {
                 <a class="mdc-deprecated-list-item @((item.IsSelected ? "mdc-deprecated-list-item--activated" : ""))" href="/@item.Name" aria-current="page">
                     <span class="mdc-deprecated-list-item__ripple"></span>
