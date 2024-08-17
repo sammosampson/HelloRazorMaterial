@@ -18,6 +18,13 @@ function chart(type, labels, colours, dataItems) {
     });
 }
 
+function hookup_charts(labels, colours, data) { 
+    chart('pie', labels, colours, data);
+    chart('doughnut', labels, colours, data);
+    chart('line', labels, colours, data);
+    chart('bar', labels, colours, data);
+}
+
 function hookup_mdc_appbar_drawer() {
     const drawerElement = document.querySelector('.mdc-drawer');
     if (drawerElement === null) {
@@ -37,6 +44,13 @@ function hookup_mdc_buttons() {
     }
 }
 
+function hookup_mdc_selects() {
+    const selects = document.querySelectorAll('.mdc-select');
+    for (const select of selects) {
+        mdc.select.MDCSelect.attachTo(select);
+    }
+}
+
 function hookup_mdc_text_fields() {
     const textFields = document.querySelectorAll('.mdc-text-field');
     for (const textField of textFields) {
@@ -48,6 +62,7 @@ function hookup_mdc() {
     hookup_mdc_appbar_drawer();
     hookup_mdc_buttons();
     hookup_mdc_text_fields();
+    hookup_mdc_selects();
 }
 
 function hookup_mdc_after_htmx_request() {

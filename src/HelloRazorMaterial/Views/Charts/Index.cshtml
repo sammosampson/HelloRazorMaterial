@@ -1,6 +1,35 @@
 ﻿@model ChartsModel
 <div class="mdc-layout-grid">
     <div class="mdc-layout-grid__inner">
+        <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12">
+            <div class="mdc-card demo-card">
+                <form asp-controller=@nameof(Charts) method="get">
+                    <div class="mdc-layout-grid">
+                        <div class="mdc-layout-grid__inner">
+                            <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12">
+                                <mdc-select 
+                                    label="Select a from month"
+                                    name="From"
+                                    options="@Model.Months">
+                                </mdc-select>
+                            </div>
+                            <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12">
+                                <mdc-select 
+                                    label="Select a from month"
+                                    name="To"
+                                    options="@Model.Months">
+                                </mdc-select>
+                            </div>
+                            <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12">
+                                <button class="mdc-button mdc-button--raised">
+                                    <span class="mdc-button__label">Refresh</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
         <div class="mdc-layout-grid__cell">
             <div class="mdc-card demo-card">
                 <canvas id="doughnut"></canvas>
@@ -26,12 +55,9 @@
 
 @section Scripts {
     <script>
-        const labels = @Html.Raw(Model.Labels.ToJson());
-        const colours = @Html.Raw(Model.Colours.ToJson());
-        const data = @Html.Raw(Model.Data.ToJson());
-        chart('pie', labels, colours, data);
-        chart('doughnut', labels, colours, data);
-        chart('line', labels, colours, data);
-        chart('bar', labels, colours, data);
+        hookup_charts(
+            @Html.Raw(Model.Labels.ToJson()), 
+            @Html.Raw(Model.Colours.ToJson()), 
+            @Html.Raw(Model.Data.ToJson()));
     </script>
 }
