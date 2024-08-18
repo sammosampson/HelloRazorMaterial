@@ -10,7 +10,7 @@ namespace HelloRazorMaterial.Controllers.Text
     {
         public IActionResult Index()
         {
-            return View(new TextModel { Items = MenuItemsBuilder.BuildWithSelectedName(nameof(Text)) });
+            return View(new TextModel { ControllerName = nameof(Text) });
         }
     }
 }

@@ -1,55 +1,28 @@
-﻿function doughnut_chart(canvasId) {
-    const ctx = document.getElementById(canvasId);
+﻿
+function chart(type, labels, colours, dataItems) {
+    const ctx = document.getElementById(type);
 
     const data = {
-        labels: [
-            'Red',
-            'Blue',
-            'Yellow'
-        ],
+        labels: labels,
         datasets: [{
-            label: 'My First Dataset',
-            data: [300, 50, 100],
-            backgroundColor: [
-                'rgb(255, 99, 132)',
-                'rgb(54, 162, 235)',
-                'rgb(255, 205, 86)'
-            ],
+            label: 'Best colours',
+            data: dataItems,
+            backgroundColor: colours,
             hoverOffset: 4
         }]
     };
 
     new Chart(ctx, {
-        type: 'doughnut',
+        type: type,
         data: data,
     });
 }
 
-function pie_chart(canvasId) {
-    const ctx = document.getElementById(canvasId);
-
-    const data = {
-        labels: [
-            'Red',
-            'Blue',
-            'Yellow'
-        ],
-        datasets: [{
-            label: 'My First Dataset',
-            data: [300, 50, 100],
-            backgroundColor: [
-                'rgb(255, 99, 132)',
-                'rgb(54, 162, 235)',
-                'rgb(255, 205, 86)'
-            ],
-            hoverOffset: 4
-        }]
-    };
-
-    new Chart(ctx, {
-        type: 'pie',
-        data: data,
-    });
+function hookup_charts(labels, colours, data) { 
+    chart('pie', labels, colours, data);
+    chart('doughnut', labels, colours, data);
+    chart('line', labels, colours, data);
+    chart('bar', labels, colours, data);
 }
 
 function hookup_mdc_appbar_drawer() {
@@ -71,6 +44,13 @@ function hookup_mdc_buttons() {
     }
 }
 
+function hookup_mdc_selects() {
+    const selects = document.querySelectorAll('.mdc-select');
+    for (const select of selects) {
+        mdc.select.MDCSelect.attachTo(select);
+    }
+}
+
 function hookup_mdc_text_fields() {
     const textFields = document.querySelectorAll('.mdc-text-field');
     for (const textField of textFields) {
@@ -82,6 +62,7 @@ function hookup_mdc() {
     hookup_mdc_appbar_drawer();
     hookup_mdc_buttons();
     hookup_mdc_text_fields();
+    hookup_mdc_selects();
 }
 
 function hookup_mdc_after_htmx_request() {
