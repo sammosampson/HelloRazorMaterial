@@ -5,7 +5,7 @@
 <aside class="mdc-drawer mdc-drawer--modal">
     <div class="mdc-drawer__content">
         <nav class="mdc-deprecated-list">
-            @foreach (MenuItem item in MenuItems.GetItems(Model.ControllerName))
+            @foreach (MenuItem item in MenuItems.Get(Model.ControllerName))
             {
                 <a class="mdc-deprecated-list-item @((item.IsSelected ? "mdc-deprecated-list-item--activated" : ""))" href="/@item.Name" aria-current="page">
                     <span class="mdc-deprecated-list-item__ripple"></span>
