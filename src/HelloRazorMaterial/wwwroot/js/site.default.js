@@ -1,4 +1,7 @@
-﻿
+﻿/* 
+    This file contains the default site-wide scripts  
+*/
+
 function chart(type, labels, colours, dataItems) {
     const ctx = document.getElementById(type);
 
@@ -16,13 +19,6 @@ function chart(type, labels, colours, dataItems) {
         type: type,
         data: data,
     });
-}
-
-function hookup_charts(labels, colours, data) { 
-    chart('pie', labels, colours, data);
-    chart('doughnut', labels, colours, data);
-    chart('line', labels, colours, data);
-    chart('bar', labels, colours, data);
 }
 
 function hookup_mdc_appbar_drawer() {
