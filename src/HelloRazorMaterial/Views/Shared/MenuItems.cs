@@ -4,7 +4,7 @@ public static class MenuItems
 {
     public static IEnumerable<MenuItem> GetItems(string controllerName) =>
         DefaultMenuItems
-            .GetItems(controllerName)
+            .Get(controllerName)
             .Union(CustomMenuItems
-                .GetItems(controllerName));
+                .Get(controllerName));
 }

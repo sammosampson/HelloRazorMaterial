@@ -7,11 +7,11 @@ namespace HelloRazorMaterial.Views.Shared;
 
 public static class CustomMenuItems
 {
-    public static IEnumerable<MenuItem> GetItems(string controllerName) =>
+    public static IEnumerable<MenuItem> Get(string controllerName) =>
     [
-        DefaultMenuItems.CreateMenuItem(nameof(Charts), "trending_up", controllerName),
-        DefaultMenuItems.CreateMenuItem(nameof(Fields), "description", controllerName),
-        DefaultMenuItems.CreateMenuItem(nameof(Buttons), "description", controllerName),
-        DefaultMenuItems.CreateMenuItem(nameof(Text), "description", controllerName)
+        MenuItem.CreateMenuItem(nameof(Charts), "trending_up", controllerName),
+        MenuItem.CreateMenuItem(nameof(Fields), "description", controllerName),
+        MenuItem.CreateMenuItem(nameof(Buttons), "description", controllerName),
+        MenuItem.CreateMenuItem(nameof(Text), "description", controllerName)
     ]; 
 }

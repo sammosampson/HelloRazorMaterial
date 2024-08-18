@@ -4,18 +4,8 @@ namespace HelloRazorMaterial.Views.Shared;
 
 public static class DefaultMenuItems
 {
-    public static IEnumerable<MenuItem> GetItems(string controllerName) =>
+    public static IEnumerable<MenuItem> Get(string controllerName) =>
     [
-        CreateMenuItem(nameof(Home), "home", controllerName),
+        MenuItem.CreateMenuItem(nameof(Home), "home", controllerName),
     ];
-
-    public static MenuItem CreateMenuItem(string name, string icon, string nameOfSelectedItem)
-    {
-        return new MenuItem
-        {
-            Name = name,
-            Icon = icon,
-            IsSelected = nameOfSelectedItem == name
-        };
-    }  
 }
