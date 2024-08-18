@@ -10,7 +10,7 @@
             TagBuilder selectBuilder = GenerateSelectContainer(fullWidth);
             var selectContentBuilder = new HtmlContentBuilder();
 
-            selectContentBuilder.AppendLine(InputBuilder.GeneratHiddenInput(id, name));
+            selectContentBuilder.AppendLine(InputGenerator.GeneratHiddenInput(id, name));
             selectContentBuilder.AppendLine(GenerateSelectAnchor(label));
             selectContentBuilder.AppendLine(GenerateSelectOptions(options));
 
@@ -36,11 +36,11 @@
             TagBuilder selectAnchorBuilder = GenerateSelectAnchorContainer();
             var selectAnchorContentBuilder = new HtmlContentBuilder();
 
-            selectAnchorContentBuilder.AppendLine(RippleBuilder.GenerateSelectRipple());
-            selectAnchorContentBuilder.AppendLine(LabelBuilder.GenerateFloatingLabel(label));
+            selectAnchorContentBuilder.AppendLine(RippleGenerator.GenerateSelectRipple());
+            selectAnchorContentBuilder.AppendLine(LabelGenerator.GenerateFloatingLabel(label));
             selectAnchorContentBuilder.AppendLine(GenerateSelectedTextContainer());
             selectAnchorContentBuilder.AppendLine(GenerateDropdownIcon());
-            selectAnchorContentBuilder.AppendLine(RippleBuilder.GenerateLineRipple());
+            selectAnchorContentBuilder.AppendLine(RippleGenerator.GenerateLineRipple());
 
             selectAnchorBuilder.InnerHtml.SetHtmlContent(selectAnchorContentBuilder);
             return selectAnchorBuilder;
@@ -71,10 +71,10 @@
             var iconBuilder = new TagBuilder("span");
             iconBuilder.AddCssClass("mdc-select__dropdown-icon");
 
-            TagBuilder iconSvgBuilder = SvgBuilder.GenerateSvg("mdc-select__dropdown-icon-graphic", "7 10 10 5");
+            TagBuilder iconSvgBuilder = SvgGenerator.GenerateSvg("mdc-select__dropdown-icon-graphic", "7 10 10 5");
             var iconSvgContentBuilder = new HtmlContentBuilder();
-            iconSvgContentBuilder.AppendLine(SvgBuilder.GenerateSvgPolygon("mdc-select__dropdown-icon-inactive", "7 10 12 15 17 10"));
-            iconSvgContentBuilder.AppendLine(SvgBuilder.GenerateSvgPolygon("mdc-select__dropdown-icon-active", "7 15 12 10 17 15"));
+            iconSvgContentBuilder.AppendLine(SvgGenerator.GenerateSvgPolygon("mdc-select__dropdown-icon-inactive", "7 10 12 15 17 10"));
+            iconSvgContentBuilder.AppendLine(SvgGenerator.GenerateSvgPolygon("mdc-select__dropdown-icon-active", "7 15 12 10 17 15"));
             iconSvgBuilder.InnerHtml.SetHtmlContent(iconSvgContentBuilder);
 
             iconBuilder.InnerHtml.SetHtmlContent(iconSvgBuilder);

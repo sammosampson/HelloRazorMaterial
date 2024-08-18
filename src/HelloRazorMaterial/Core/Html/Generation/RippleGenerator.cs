@@ -2,8 +2,15 @@
 {
     using Microsoft.AspNetCore.Mvc.Rendering;
 
-    public static class RippleBuilder
+    public static class RippleGenerator
     {
+        public static TagBuilder GenerateListItemRipple()
+        {
+            var rippleBuilder = new TagBuilder("span");
+            rippleBuilder.AddCssClass("mdc-list-item__ripple");
+            return rippleBuilder;
+        }
+
         public static TagBuilder GenerateSelectRipple()
         {
             var selectRippleBuilder = new TagBuilder("span");

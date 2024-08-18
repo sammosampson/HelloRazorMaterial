@@ -3,7 +3,7 @@
     using Microsoft.AspNetCore.Html;
     using Microsoft.AspNetCore.Mvc.Rendering;
 
-    public static class SvgBuilder
+    public static class SvgGenerator
     {
         public static TagBuilder GenerateSvg(string cssClass, string viewBox)
         {

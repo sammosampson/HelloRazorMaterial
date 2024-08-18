@@ -3,7 +3,7 @@
     using Microsoft.AspNetCore.Html;
     using Microsoft.AspNetCore.Mvc.Rendering;
 
-    public static class LabelBuilder
+    public static class LabelGenerator
     {
         public static TagBuilder GenerateFloatingLabel(string label)
         {

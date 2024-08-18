@@ -2,7 +2,7 @@
 {
     using Microsoft.AspNetCore.Mvc.Rendering;
 
-    public static class InputBuilder
+    public static class InputGenerator
     {
         public static TagBuilder GeneratHiddenInput(string? id, string name)
         {
