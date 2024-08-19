@@ -5,16 +5,23 @@
 
     public static class ListGenerator
     {
-        public static TagBuilder GenerateList(IEnumerable<SelectListItem> options)
+        public static TagBuilder GenerateList(IEnumerable<SelectListItem>? items, string? selectedItem)
         {
+            items = items ?? Enumerable.Empty<SelectListItem>();
+            
             TagBuilder listBuilder = GenerateListContainer();
             var listContentBuilder = new HtmlContentBuilder();
 
-            listContentBuilder.AppendLine(GenerateListItem(true));
-            
-            foreach (SelectListItem option in options)
+            if (string.IsNullOrEmpty(selectedItem))
             {
-                listContentBuilder.AppendLine(GenerateListItem(false, option.Value, option.Text));
+                var emptyItem = new SelectListItem { Text = string.Empty, Value = string.Empty, Selected = true };
+                listContentBuilder.AppendLine(GenerateListItem(emptyItem));
+            }
+
+            foreach (SelectListItem item in items)
+            {
+                item.Selected = !item.Selected && (selectedItem == item.Value);
+                listContentBuilder.AppendLine(GenerateListItem(item));
             }
 
             listBuilder.InnerHtml.SetHtmlContent(listContentBuilder);
@@ -30,31 +37,31 @@
             return listBuilder;
         }
 
-        public static IHtmlContent GenerateListItem(bool selected = false, string value = "", string text = "")
+        public static IHtmlContent GenerateListItem(SelectListItem item)
         {
-            TagBuilder listItemBuilder = GenerateListItemContainer(selected, value);
+            TagBuilder listItemBuilder = GenerateListItemContainer(item);
             listItemBuilder.InnerHtml.SetHtmlContent(RippleGenerator.GenerateListItemRipple());
 
-            if (text.Length > 0)
+            if (!string.IsNullOrEmpty(item.Text))
             {
-                GenerateListItemText(text, listItemBuilder);
+                GenerateListItemText(item.Text, listItemBuilder);
             }
 
             return listItemBuilder;
         }
 
-        private static TagBuilder GenerateListItemContainer(bool selected, string value)
+        private static TagBuilder GenerateListItemContainer(SelectListItem item)
         {
             var listItemBuilder = new TagBuilder("li");
             listItemBuilder.AddCssClass("mdc-list-item");
             
-            if (selected)
+            if (item.Selected)
             {
                 listItemBuilder.AddCssClass("mdc-list-item--selected");
             }
 
-            listItemBuilder.Attributes.Add("aria-selected", selected.ToString().ToLower());
-            listItemBuilder.Attributes.Add("data-value", value);
+            listItemBuilder.Attributes.Add("aria-selected", item.Selected.ToString().ToLower());
+            listItemBuilder.Attributes.Add("data-value", item.Value);
             listItemBuilder.Attributes.Add("role", "option");
 
             return listItemBuilder;

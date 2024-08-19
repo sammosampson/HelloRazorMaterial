@@ -8,16 +8,20 @@
                         <div class="mdc-layout-grid__inner">
                             <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12">
                                 <mdc-select 
+                                    id="from-month" 
                                     label="Select from month"
                                     name="From"
-                                    options="@Model.Months">
+                                    for=@Model.From
+                                    items="@Model.Months">
                                 </mdc-select>
                             </div>
                             <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12">
                                 <mdc-select 
+                                    id="to-month"
                                     label="Select to month"
                                     name="To"
-                                    options="@Model.Months">
+                                    for=@Model.To
+                                    items="@Model.Months">
                                 </mdc-select>
                             </div>
                             <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12">
