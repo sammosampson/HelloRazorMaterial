@@ -41,7 +41,7 @@ namespace HelloRazorMaterial.Core.Html.Generation
             return builder;
         }
 
-        private static IHtmlContent? GenerateMenu()
+        private static IHtmlContent GenerateMenu()
         {
             var builder = new TagBuilder("button");
             builder.AddCssClass("material-icons");
@@ -51,9 +51,9 @@ namespace HelloRazorMaterial.Core.Html.Generation
             return builder;
         }
 
-        private static IHtmlContent? GenerateTitle(string title)
+        private static IHtmlContent GenerateTitle(string title)
         {
-            var builder = new TagBuilder("button");
+            var builder = new TagBuilder("span");
             builder.AddCssClass("mdc-top-app-bar__title");
             builder.InnerHtml.SetContent(title);
             return builder;
