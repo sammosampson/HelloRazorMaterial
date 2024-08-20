@@ -1,8 +1,6 @@
 ﻿namespace HelloRazorMaterial.Core.Html.Generation
 {
-    using Microsoft.AspNetCore.Html;
     using Microsoft.AspNetCore.Mvc.Rendering;
-    using System;
 
     public static class GridGenerator
     {

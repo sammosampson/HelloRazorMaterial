@@ -2,7 +2,7 @@
 <mdc-grid>
     <mdc-grid-inner>
         <mdc-grid-cell span=12>
-            <div class="mdc-card">
+            <mdc-card>
                 <form asp-controller=@nameof(Charts) method="get">
                     <mdc-grid>
                         <mdc-grid-inner>
@@ -34,27 +34,27 @@
                         </mdc-grid-inner>
                     </mdc-grid>
                 </form>
-            </div>
+            </mdc-card>
         </mdc-grid-cell>
         <mdc-grid-cell>
-            <div class="mdc-card">
+            <mdc-card>
                 <canvas id="doughnut"></canvas>
-            </div>
+            </mdc-card>
         </mdc-grid-cell>
         <mdc-grid-cell>
-            <div class="mdc-card">
+            <mdc-card>
                 <canvas id="pie"></canvas>
-            </div>
+            </mdc-card>
         </mdc-grid-cell>
         <mdc-grid-cell>
-            <div class="mdc-card">
+            <mdc-card>
                 <canvas id="line"></canvas>
-            </div>
+            </mdc-card>
         </mdc-grid-cell>
         <mdc-grid-cell>
-            <div class="mdc-card">
+            <mdc-card>
                 <canvas id="bar"></canvas>
-            </div>
+            </mdc-card>
         </mdc-grid-cell>
     </mdc-grid-inner>
 </mdc-grid>
