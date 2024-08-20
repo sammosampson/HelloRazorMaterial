@@ -6,7 +6,7 @@
     {
         public static string ToJson(this object from)
         {
-            return JsonSerializer.Serialize(from);
+            return JsonSerializer.Serialize(from, new JsonSerializerOptions { PropertyNamingPolicy = JsonNamingPolicy.CamelCase });
         }
     }
 }

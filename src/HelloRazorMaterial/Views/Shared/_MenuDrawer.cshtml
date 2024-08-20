@@ -1,18 +1,18 @@
 ﻿@model MenuModel
-@{
-}
 
-<aside class="mdc-drawer mdc-drawer--modal">
-    <div class="mdc-drawer__content">
-        <nav class="mdc-deprecated-list">
-            @foreach (MenuItem item in MenuItems.Get(Model.ControllerName))
-            {
-                <a class="mdc-deprecated-list-item @((item.IsSelected ? "mdc-deprecated-list-item--activated" : ""))" href="/@item.Name" aria-current="page">
-                    <span class="mdc-deprecated-list-item__ripple"></span>
-                    <i class="material-icons mdc-deprecated-list-item__graphic" aria-hidden="true">@item.Icon</i>
-                        <span class="mdc-deprecated-list-item__text">@item.Name</span>
-                </a>
-            }
-        </nav>
-    </div>
-</aside>
+<mdc-drawer id="app-drawer">
+    <mdc-drawer-content>
+        <mdc-drawer-nav>
+        @foreach (MenuItem item in MenuItems.Get(Model.ControllerName))
+        {
+            <mdc-drawer-item
+                id=@($"app-drawer-item{item.Name}")
+                selected=@item.IsSelected
+                href="/@item.Name"
+                text="@item.Name"
+                icon=@item.Icon>
+            </mdc-drawer-item>
+        }
+        </mdc-drawer-nav>
+    </mdc-drawer-content>
+</mdc-drawer>

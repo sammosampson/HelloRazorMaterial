@@ -1,4 +1,10 @@
 ﻿@model ChartsModel
+@{
+    ChartConfig doughnutChartConfig = BestColoursChartConfigBuilder.Build("doughnut", Model.Labels, Model.Colours, Model.Data);
+    ChartConfig pieChartConfig = BestColoursChartConfigBuilder.Build("pie", Model.Labels, Model.Colours, Model.Data);
+    ChartConfig lineChartConfig = BestColoursChartConfigBuilder.Build("line", Model.Labels, Model.Colours, Model.Data);
+    ChartConfig barChartConfig = BestColoursChartConfigBuilder.Build("bar", Model.Labels, Model.Colours, Model.Data);
+}
 <mdc-grid>
     <mdc-grid-inner>
         <mdc-grid-cell span=12>
@@ -38,32 +44,23 @@
         </mdc-grid-cell>
         <mdc-grid-cell>
             <mdc-card>
-                <canvas id="doughnut"></canvas>
+                <chartjs-chart id="doughnut" config=@doughnutChartConfig></chartjs-chart>
             </mdc-card>
         </mdc-grid-cell>
         <mdc-grid-cell>
             <mdc-card>
-                <canvas id="pie"></canvas>
+                <chartjs-chart id="pie" config=@pieChartConfig></chartjs-chart>
             </mdc-card>
         </mdc-grid-cell>
         <mdc-grid-cell>
             <mdc-card>
-                <canvas id="line"></canvas>
+                <chartjs-chart id="line" config=@lineChartConfig></chartjs-chart>
             </mdc-card>
         </mdc-grid-cell>
         <mdc-grid-cell>
             <mdc-card>
-                <canvas id="bar"></canvas>
+                <chartjs-chart id="bar" config=@barChartConfig></chartjs-chart>
             </mdc-card>
         </mdc-grid-cell>
     </mdc-grid-inner>
 </mdc-grid>
-
-@section Scripts {
-    <script>
-        hookup_charts(
-        @Html.Raw(Model.Labels.ToJson()),
-        @Html.Raw(Model.Colours.ToJson()),
-        @Html.Raw(Model.Data.ToJson()));
-    </script>
-}
