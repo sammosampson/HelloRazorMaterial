@@ -2,10 +2,9 @@
 {
     using Microsoft.AspNetCore.Html;
     using Microsoft.AspNetCore.Mvc.Rendering;
-
     public static class SelectGenerator
     {
-        public static TagBuilder GenerateSelect(
+            public static TagBuilder GenerateSelect(
             string id,
             string label,
             string? name, 
@@ -18,7 +17,7 @@
 
             if (name != null)
             {
-                selectContentBuilder.AppendLine(InputGenerator.GeneratHiddenInput(name));
+                selectContentBuilder.AppendLine(InputGenerator.GeneratInput(name, MdcFieldType.Hidden));
             }
 
             selectContentBuilder.AppendLine(GenerateSelectAnchor(id, label, variant));

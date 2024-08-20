@@ -1,95 +1,158 @@
-﻿<div class="mdc-layout-grid">
-    <div class="mdc-layout-grid__inner">
+﻿<mdc-grid>
+    <mdc-grid-inner>
+        <mdc-grid-cell span=12>
+            <mdc-button 
+                id="mdc-text-button"
+                label="Text Button">
+            </mdc-button>
+        </mdc-grid-cell>
 
-        <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12">
-            <button class="mdc-button mdc-button">mdc button</button>
-        </div>
+        <mdc-grid-cell span=12>
+            <mdc-button 
+                id="mdc-button-raised"
+                label="Raised button"
+                button-type=Raised>
+            </mdc-button>
+        </mdc-grid-cell>
 
-        <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12">
-            <button class="mdc-button mdc-button--raised">
-                mdc button raised
-            </button>
-        </div>
+        <mdc-grid-cell span=12>
+            <mdc-button 
+                id="mdc-ripple-button"
+                label="Ripple button"
+                focus-ring
+                ripple>
+            </mdc-button>
+        </mdc-grid-cell>
 
-        <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12">
-            <button class="mdc-button">
-                <span class="mdc-button__ripple"></span>
-                <span class="mdc-button__focus-ring"></span>
-                <span class="mdc-button__label">mdc ripple button</span>
-            </button>
-        </div>
+        <mdc-grid-cell span=12>
+            <mdc-button 
+                id="mdc-ripple-button-raised"
+                label="Ripple button raised"
+                focus-ring
+                ripple
+                button-type=Raised>
+            </mdc-button>
+        </mdc-grid-cell>
+        
+        <mdc-grid-cell span=12>
+            <mdc-button 
+                id="mdc-ripple-button-oulined"
+                label="Ripple button outlined"
+                focus-ring
+                ripple
+                button-type=Outlined>
+            </mdc-button>
+        </mdc-grid-cell>
 
-        <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12">
-            <button class="mdc-button mdc-button--raised">
-                <span class="mdc-button__ripple"></span>
-                <span class="mdc-button__focus-ring"></span>
-                <span class="mdc-button__label">mdc ripple button raised</span>
-            </button>
-        </div>
+        <mdc-grid-cell span=12>
+            <mdc-button 
+                id="mdc-ripple-button-accessible"
+                label="Ripple button accessible"
+                focus-ring
+                ripple
+                touch>
+            </mdc-button>
+        </mdc-grid-cell>
 
-        <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12">
-            <button class="mdc-button mdc-button--touch">
-                <span class="mdc-button__ripple"></span>
-                <span class="mdc-button__touch"></span>
-                <span class="mdc-button__focus-ring"></span>
-                <span class="mdc-button__label">mdc ripple button accessible</span>
-            </button>
-        </div>
+        <mdc-grid-cell span=12>
+            <mdc-button 
+                id="mdc-button-plus-leading-icon"
+                label="Button plus leading icon"
+                icon-type=Leading
+                icon="bookmark"
+                focus-ring
+                ripple>
+            </mdc-button>
+        </mdc-grid-cell>
 
-        <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12">
-            <button class="mdc-button mdc-button--icon-leading">
-                <span class="mdc-button__ripple"></span>
-                <span class="mdc-button__focus-ring"></span>
-                <i class="material-icons mdc-button__icon" aria-hidden="true">bookmark</i>
-                <span class="mdc-button__label">mdc buton plus icon</span>
-            </button>
-        </div>
+        <mdc-grid-cell span=12>
+            <mdc-button 
+                id="mdc-button-plus-trailing-icon"
+                label="Button plus trailing icon"
+                icon-type=Trailing
+                icon="bookmark"
+                focus-ring
+                ripple>
+            </mdc-button>
+        </mdc-grid-cell>
 
-        <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12">
-            <button class="mdc-button mdc-button--outlined">
-                <span class="mdc-button__ripple"></span>
-                <span class="mdc-button__focus-ring"></span>
-                <span class="mdc-button__label">mdc outlined button</span>
-            </button>
-        </div>
+        <mdc-grid-cell span=12>
+            <mdc-button 
+                id="mdc-outlined-button-plus-leading-icon"
+                label="Outlined button plus leading icon"
+                icon-type=Leading
+                icon="bookmark"
+                focus-ring
+                ripple
+                button-type=Outlined>
+            </mdc-button>
+        </mdc-grid-cell>
 
-        <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12">
-            <button class="mdc-button mdc-button--outlined mdc-button--icon-leading">
-                <span class="mdc-button__ripple"></span>
-                <span class="mdc-button__focus-ring"></span>
-                <i class="material-icons mdc-button__icon" aria-hidden="true">bookmark</i>
-                <span class="mdc-button__label">mdc outlined button plus icon</span>
-            </button>
-        </div>
+        <mdc-grid-cell span=12>
+            <mdc-button 
+                id="mdc-outlined-button-plus-trailing-icon"
+                label="Outlined button plus trailing icon"
+                icon-type=Trailing
+                icon="bookmark"
+                focus-ring
+                ripple
+                button-type=Outlined>
+            </mdc-button>
+        </mdc-grid-cell>
 
-        <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12">
-            <button class="mdc-button mdc-button--raised">
-                <span class="mdc-button__ripple"></span>
-                <span class="mdc-button__focus-ring"></span>
-                <span class="mdc-button__label">Contained Button</span>
-            </button>
-        </div>
+        <mdc-grid-cell span=12>
+            <mdc-button 
+                id="mdc-raised-plus-leading-icon-button"
+                label="Raised button plus leading icon"
+                icon-type=Leading
+                icon="bookmark"
+                focus-ring
+                ripple
+                button-type=Raised>
+            </mdc-button>
+        </mdc-grid-cell>
 
-        <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12">
-            <button class="mdc-button mdc-button--raised mdc-button--icon-leading">
-                <span class="mdc-button__ripple"></span>
-                <span class="mdc-button__focus-ring"></span>
-                <i class="material-icons mdc-button__icon" aria-hidden="true">bookmark</i>
-                <span class="mdc-button__label">Contained Button plus Icon</span>
-            </button>
-        </div>
+        <mdc-grid-cell span=12>
+            <mdc-button 
+                id="mdc-raised-plus-trailing-icon-button"
+                label="Raised button plus trailing icon"
+                icon-type=Trailing
+                icon="bookmark"
+                focus-ring
+                ripple
+                button-type=Raised>
+            </mdc-button>
+        </mdc-grid-cell>
 
-        <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12">
-            <button class="mdc-button mdc-js-button mdc-button--fab">
-                <i class="material-icons">add</i>
-            </button>
-        </div>
+        <mdc-grid-cell span=12>
+            <mdc-button 
+                id="mdc-diabled-button"
+                label="Disabled button"
+                focus-ring
+                ripple
+                button-type=Raised
+                disabled>
+            </mdc-button>
+        </mdc-grid-cell>
 
-        <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12">
-            <button class="mdc-button mdc-js-button mdc-button--fab" disabled>
-                <i class="material-icons">add</i>
-            </button>
-        </div>
+        <mdc-grid-cell span=12>
+            <mdc-fab id="mdc-fab" icon="favorite" label="Favorite">
+            </mdc-fab>
+        </mdc-grid-cell>
 
-    </div>
-</div>
+        <mdc-grid-cell span=12>
+            <mdc-fab id="mdc-fab-mini" fab-type=Mini icon="favorite" label="Favorite">
+            </mdc-fab>
+        </mdc-grid-cell>
+
+        <mdc-grid-cell span=12>
+            <mdc-fab id="mdc-fab-extended" fab-type=Extended icon="add" label="Create">
+            </mdc-fab>
+        </mdc-grid-cell>
+
+        <mdc-grid-cell span=12>
+            <mdc-fab id="mdc-fab-touch" touch icon="add" label="Create">
+            </mdc-fab>
+        </mdc-grid-cell>
+    </mdc-grid-inner>
+</mdc-grid>
