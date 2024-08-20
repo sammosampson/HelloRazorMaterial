@@ -1,14 +1,18 @@
 ﻿@model MenuModel
 
 <mdc-drawer id="app-drawer">
-    @foreach (MenuItem item in MenuItems.Get(Model.ControllerName))
-    {
-        <mdc-drawer-item 
-            id=@($"app-drawer-item{item.Name}")
-            selected=@item.IsSelected 
-            href="/@item.Name" 
-            text="@item.Name" 
-            icon=@item.Icon>
-        </mdc-drawer-item>
-    }
+    <mdc-drawer-content>
+        <mdc-drawer-nav>
+        @foreach (MenuItem item in MenuItems.Get(Model.ControllerName))
+        {
+            <mdc-drawer-item
+                id=@($"app-drawer-item{item.Name}")
+                selected=@item.IsSelected
+                href="/@item.Name"
+                text="@item.Name"
+                icon=@item.Icon>
+            </mdc-drawer-item>
+        }
+        </mdc-drawer-nav>
+    </mdc-drawer-content>
 </mdc-drawer>
