@@ -2,23 +2,16 @@
     This file contains the default site-wide scripts  
 */
 
-function chart(type, labels, colours, dataItems) {
-    const ctx = document.getElementById(type);
+function hookup_chart(element) {
+    var config = JSON.parse(document.getElementById(`${element.id}-chart-script`).textContent);
+    new Chart(element, config);
+}
 
-    const data = {
-        labels: labels,
-        datasets: [{
-            label: 'Best colours',
-            data: dataItems,
-            backgroundColor: colours,
-            hoverOffset: 4
-        }]
-    };
-
-    new Chart(ctx, {
-        type: type,
-        data: data,
-    });
+function hookup_charts() {
+    const charts = document.querySelectorAll('.chartjs-chart');
+    for (const chart of charts) {
+        hookup_chart(chart);
+    }
 }
 
 function hookup_mdc_appbar_drawer() {
@@ -54,18 +47,19 @@ function hookup_mdc_text_fields() {
     }
 }
 
-function hookup_mdc() {
+function hookup() {
+    hookup_charts();
     hookup_mdc_appbar_drawer();
     hookup_mdc_buttons();
     hookup_mdc_text_fields();
     hookup_mdc_selects();
 }
 
-function hookup_mdc_after_htmx_request() {
+function hookup_after_htmx_request() {
     document.addEventListener('htmx:afterRequest', function (evt) {
-        hookup_mdc();
+        hookup();
     });
 }
 
-hookup_mdc_after_htmx_request();
-hookup_mdc();
+hookup_after_htmx_request();
+hookup();
