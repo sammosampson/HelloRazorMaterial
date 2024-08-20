@@ -1,26 +1,20 @@
 ﻿
 <form class="centered-box" asp-controller=@nameof(Login)>
-    <div class="mdc-text-field mdc-text-field--outlined mdc-text-field--fullwidth">
-        <input type="email" name="email" class="mdc-text-field__input" required />
-        <span class="mdc-notched-outline">
-            <span class="mdc-notched-outline__leading"></span>
-            <span class="mdc-notched-outline__notch">
-                <span class="mdc-floating-label" id="EmailLabel">Email</span>
-            </span>
-            <span class="mdc-notched-outline__trailing"></span>
-        </span>
-    </div>
-    <div class="mdc-text-field mdc-text-field--outlined mdc-text-field--fullwidth">
-        <input type="password" name="password" class="mdc-text-field__input" required />
-        <span class="mdc-notched-outline">
-            <span class="mdc-notched-outline__leading"></span>
-            <span class="mdc-notched-outline__notch">
-                <span class="mdc-floating-label" id="PasswordLabel">Password</span>
-            </span>
-            <span class="mdc-notched-outline__trailing"></span>
-        </span>
-    </div>
-    <button class="mdc-button mdc-button--raised mdc-layout-grid__cell--span-12">
-        <span class="mdc-button__label">Login</span>
-    </button>
+    <mdc-field 
+        id="email"
+        name="Email"
+        label="Email"
+        field-type=Email>
+    </mdc-field>
+    <mdc-field 
+        id="password"
+        name="Password"
+        label="Password"    
+        field-type=Password>
+    </mdc-field>
+    <mdc-button 
+        id="login" 
+        button-type=Raised 
+        label="Login">
+    </mdc-button>
 </form>

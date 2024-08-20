@@ -1,63 +1,69 @@
 ﻿@model ChartsModel
-<div class="mdc-layout-grid">
-    <div class="mdc-layout-grid__inner">
-        <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12">
-            <div class="mdc-card demo-card">
+<mdc-grid>
+    <mdc-grid-inner>
+        <mdc-grid-cell span=12>
+            <mdc-card>
                 <form asp-controller=@nameof(Charts) method="get">
-                    <div class="mdc-layout-grid">
-                        <div class="mdc-layout-grid__inner">
-                            <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12">
+                    <mdc-grid>
+                        <mdc-grid-inner>
+                            <mdc-grid-cell span=12>
                                 <mdc-select 
+                                    id="from-month"
                                     label="Select from month"
                                     name="From"
-                                    options="@Model.Months">
+                                    for=@Model.From
+                                    items="@Model.Months">
                                 </mdc-select>
-                            </div>
-                            <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12">
+                            </mdc-grid-cell>
+                            <mdc-grid-cell span=12>
                                 <mdc-select 
+                                    id="to-month"
                                     label="Select to month"
                                     name="To"
-                                    options="@Model.Months">
+                                    for=@Model.To
+                                    items="@Model.Months">
                                 </mdc-select>
-                            </div>
-                            <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12">
-                                <button class="mdc-button mdc-button--raised">
-                                    <span class="mdc-button__label">Refresh</span>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
+                            </mdc-grid-cell>
+                            <mdc-grid-cell span=12>
+                                <mdc-button
+                                    id="refresh"
+                                    button-type=Raised
+                                    label="Refresh">
+                                </mdc-button>
+                            </mdc-grid-cell>
+                        </mdc-grid-inner>
+                    </mdc-grid>
                 </form>
-            </div>
-        </div>
-        <div class="mdc-layout-grid__cell">
-            <div class="mdc-card demo-card">
+            </mdc-card>
+        </mdc-grid-cell>
+        <mdc-grid-cell>
+            <mdc-card>
                 <canvas id="doughnut"></canvas>
-            </div>
-        </div>
-        <div class="mdc-layout-grid__cell">
-            <div class="mdc-card demo-card">
+            </mdc-card>
+        </mdc-grid-cell>
+        <mdc-grid-cell>
+            <mdc-card>
                 <canvas id="pie"></canvas>
-            </div>
-        </div>
-        <div class="mdc-layout-grid__cell">
-            <div class="mdc-card demo-card">
+            </mdc-card>
+        </mdc-grid-cell>
+        <mdc-grid-cell>
+            <mdc-card>
                 <canvas id="line"></canvas>
-            </div>
-        </div>
-        <div class="mdc-layout-grid__cell">
-            <div class="mdc-card demo-card">
+            </mdc-card>
+        </mdc-grid-cell>
+        <mdc-grid-cell>
+            <mdc-card>
                 <canvas id="bar"></canvas>
-            </div>
-        </div>
-    </div>
-</div>
+            </mdc-card>
+        </mdc-grid-cell>
+    </mdc-grid-inner>
+</mdc-grid>
 
 @section Scripts {
     <script>
         hookup_charts(
-            @Html.Raw(Model.Labels.ToJson()), 
-            @Html.Raw(Model.Colours.ToJson()), 
-            @Html.Raw(Model.Data.ToJson()));
+        @Html.Raw(Model.Labels.ToJson()),
+        @Html.Raw(Model.Colours.ToJson()),
+        @Html.Raw(Model.Data.ToJson()));
     </script>
 }
