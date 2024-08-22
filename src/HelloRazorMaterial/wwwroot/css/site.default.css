@@ -16,3 +16,9 @@
 .centered-box, .mdc-button {
     margin-top: 1rem;
 }
+
+
+.demo-cell {
+    background: rgba(0, 0, 0, .2);
+    height: 100px;
+}

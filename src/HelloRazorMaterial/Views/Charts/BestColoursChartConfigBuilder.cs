@@ -1,6 +1,6 @@
 ﻿namespace HelloRazorMaterial.Views.Charts
 {
-    using HelloRazorMaterial.Core.Html.Chart;
+    using Core.Html.Chart;
 
     public static class BestColoursChartConfigBuilder
     {
