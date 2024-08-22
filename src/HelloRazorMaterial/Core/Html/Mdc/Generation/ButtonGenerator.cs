@@ -49,6 +49,79 @@
             return builder;
         }
 
+        public static TagBuilder GenerateCardActionButton(string id, string? label, bool ripple, bool touch, bool disabled) {
+            TagBuilder builder = GenerateContainer(id, MdcButtonType.None, MdcIconType.None, false, disabled);
+            builder.AddCssClass("mdc-card__action");
+            builder.AddCssClass("mdc-card__action--button");
+            
+            var contentBuilder = new HtmlContentBuilder();
+
+            if (ripple)
+            {
+                contentBuilder.AppendHtml(RippleGenerator.GenerateButtonRipple());
+            }
+
+            if (touch)
+            {
+                contentBuilder.AppendHtml(GenerateTouch());
+            }
+
+            if (label != null)
+            {
+                contentBuilder.AppendHtml(GenerateLabel(label));
+            }
+
+            builder.InnerHtml.SetHtmlContent(contentBuilder);
+
+            if (touch)
+            {
+                var touchWrapperBuilder = TouchGenerator.GenerateTouchWrapper();
+                touchWrapperBuilder.InnerHtml.SetHtmlContent(builder);
+                return touchWrapperBuilder;
+            }
+
+            return builder;
+        }
+
+        public static TagBuilder GenerateCardActionIconButton(string id, string? title, bool ripple, bool touch, bool disabled)
+        {
+            TagBuilder builder = GenerateContainer(id, MdcButtonType.None, MdcIconType.None, false, disabled);
+            builder.AddCssClass("material-icons");
+            builder.AddCssClass("mdc-icon-button");
+            builder.AddCssClass("mdc-card__action");
+            builder.AddCssClass("mdc-card__action--icon");
+            
+            if (title != null)
+            {
+                builder.Attributes.Add("title", title);
+            }
+
+            var contentBuilder = new HtmlContentBuilder();
+
+            if (ripple)
+            {
+                contentBuilder.AppendHtml(RippleGenerator.GenerateButtonRipple());
+            }
+
+            if (touch)
+            {
+                contentBuilder.AppendHtml(GenerateTouch());
+            }
+
+            
+
+            builder.InnerHtml.SetHtmlContent(contentBuilder);
+
+            if (touch)
+            {
+                var touchWrapperBuilder = TouchGenerator.GenerateTouchWrapper();
+                touchWrapperBuilder.InnerHtml.SetHtmlContent(builder);
+                return touchWrapperBuilder;
+            }
+
+            return builder;
+        }
+
         private static TagBuilder GenerateContainer(string id, MdcButtonType buttonType, MdcIconType iconType, bool touch, bool disabled)
         {
             var builder = new TagBuilder("button");

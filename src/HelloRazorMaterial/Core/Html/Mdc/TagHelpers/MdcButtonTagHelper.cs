@@ -1,7 +1,7 @@
 ﻿namespace HelloRazorMaterial.Core.Html.Mdc.TagHelpers
 {
-    using HelloRazorMaterial.Core.Html.Mdc;
-    using HelloRazorMaterial.Core.Html.Mdc.Generation;
+    using Mdc;
+    using Generation;
     using Microsoft.AspNetCore.Mvc.Rendering;
     using Microsoft.AspNetCore.Mvc.TagHelpers;
     using Microsoft.AspNetCore.Razor.TagHelpers;
