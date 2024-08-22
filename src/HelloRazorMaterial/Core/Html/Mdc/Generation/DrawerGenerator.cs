@@ -1,6 +1,5 @@
 ﻿namespace HelloRazorMaterial.Core.Html.Mdc.Generation
 {
-    using Microsoft.AspNetCore.Html;
     using Microsoft.AspNetCore.Mvc.Rendering;
     
     public class DrawerGenerator
