@@ -1,5 +1,5 @@
 ﻿@{
-    Layout = "_Layout";
+    Layout = this.Context.Request.IsHtmx() ? "" : "_Layout";
 }
 
 <div class="mdc-drawer-app-content">

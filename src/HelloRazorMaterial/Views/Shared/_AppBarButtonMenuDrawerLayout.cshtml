@@ -1,6 +1,6 @@
 ﻿@using Microsoft.AspNetCore.Mvc.TagHelpers
 @{
-    Layout = "_Layout";
+    Layout = this.Context.Request.IsHtmx() ? "" : "_Layout";
 }
 <partial name="~/Views/Shared/_MenuDrawer.cshtml" />
 <partial name="~/Views/Shared/_MenuDrawerScrim.cshtml" />
