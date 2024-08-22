@@ -6,6 +6,13 @@
 
     public static class RippleGenerator
     {
+        public static TagBuilder GenerateCardRipple()
+        {
+            var lineRippleBuilder = new TagBuilder("div");
+            lineRippleBuilder.AddCssClass("mdc-card__ripple");
+            return lineRippleBuilder;
+        }
+
         public static TagBuilder GenerateListItemRipple()
         {
             var rippleBuilder = new TagBuilder("span");
