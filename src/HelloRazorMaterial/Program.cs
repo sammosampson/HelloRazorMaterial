@@ -1,4 +1,5 @@
 using HelloRazorMaterial.Abstractions;
+using HelloRazorMaterial.Controllers.Fields;
 using HelloRazorMaterial.Controllers.Login;
 using HelloRazorMaterial.Pipeline.Charts;
 
@@ -6,6 +7,8 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services
     .AddControllersWithViews();
+
+builder.Services.AddSingleton<FieldModelCache>();
 
 builder.Services
     .AddMediatR(cfg => cfg.RegisterServicesFromAssemblyContaining<GetChartsViewDataRequestHandler>());

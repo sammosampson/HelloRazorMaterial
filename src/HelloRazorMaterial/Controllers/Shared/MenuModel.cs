@@ -1,6 +1,6 @@
 ﻿namespace HelloRazorMaterial.Controllers.Shared
 {
     public record MenuModel {
-        public required string ControllerName { get; init; }
+        public string ControllerName { get; init; } = string.Empty;
     }
 }

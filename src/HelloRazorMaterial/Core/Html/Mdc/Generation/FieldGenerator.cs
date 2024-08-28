@@ -3,24 +3,16 @@
     using HelloRazorMaterial.Core.Html.Mdc;
     using Microsoft.AspNetCore.Html;
     using Microsoft.AspNetCore.Mvc.Rendering;
-    using System;
 
     public static class FieldGenerator
     {
-        public static TagBuilder GenerateField(string id, string label, string? name, string? value, MdcFieldType fieldType, MdcVariant variant, bool required)
-        {
-            TagBuilder builder = GenerateFieldContainer(variant);
-            var contentBuilder = new HtmlContentBuilder();
-            contentBuilder.AppendLine(InputGenerator.GeneratInput(name, fieldType, "mdc-text-field__input", required));
-            GenerateOutlineAndLabel(contentBuilder, id, label, variant);
-            builder.InnerHtml.SetHtmlContent(contentBuilder);
-
-            return builder;
-        }
-
-        private static TagBuilder GenerateFieldContainer(MdcVariant variant)
+        public static TagBuilder GenerateFieldContainer(string? label, MdcVariant variant)
         {
             var builder = new TagBuilder("label");
+            if (label == null)
+            {
+                builder.AddCssClass("mdc-text-field--no-label");
+            }
             builder.AddCssClass("mdc-text-field");
             switch (variant)
             {
@@ -34,29 +26,37 @@
             return builder;
         }
 
-        private static void GenerateOutlineAndLabel(HtmlContentBuilder content, string id, string label, MdcVariant variant)
+        public static void GenerateOutlineAndLabel(HtmlContentBuilder content, string id, string? label, MdcVariant variant, string? value)
         {
+            bool floatLabelAbove = value is not null;
+
             switch (variant)
             {
                 case MdcVariant.Outlined:
                     TagBuilder outlineBuilder = OutlineGenerator.GenerateNotchedOutline();
                     var outlineContentBuilder = new HtmlContentBuilder();
                     outlineContentBuilder.AppendLine(OutlineGenerator.GenerateNotchedOutlineLeading());
-                    TagBuilder outlineNotchBuilder = OutlineGenerator.GenerateNotchedOutlineNotch();
-                    outlineContentBuilder.AppendLine(outlineNotchBuilder);
-                    outlineNotchBuilder.InnerHtml.SetHtmlContent(LabelGenerator.GenerateFloatingLabel(GetLabelId(id), label));
+                    if (label != null)
+                    {
+                        TagBuilder outlineNotchBuilder = OutlineGenerator.GenerateNotchedOutlineNotch();
+                        outlineContentBuilder.AppendLine(outlineNotchBuilder);
+                        outlineNotchBuilder.InnerHtml.SetHtmlContent(LabelGenerator.GenerateFloatingLabel(GetLabelId(id), label, floatLabelAbove));
+                    }
                     outlineContentBuilder.AppendLine(OutlineGenerator.GenerateNotchedOutlineTrailing());
                     outlineBuilder.InnerHtml.SetHtmlContent(outlineContentBuilder);
                     content.AppendLine(outlineBuilder);
                     break;
                 case MdcVariant.Filled:
                     content.AppendLine(RippleGenerator.GenerateSelectRipple());
-                    content.AppendLine(LabelGenerator.GenerateFloatingLabel(GetLabelId(id), label));
+                    if (label != null)
+                    {
+                        content.AppendLine(LabelGenerator.GenerateFloatingLabel(GetLabelId(id), label, floatLabelAbove));
+                    }
                     break;
             }
         }
 
-        private static string GetLabelId(string id)
+        public static string GetLabelId(string id)
         {
             return $"{id}-field-label";
         }

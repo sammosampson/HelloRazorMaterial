@@ -48,10 +48,17 @@
             return buttonRippleBuilder;
         }
 
-        internal static IHtmlContent? GenerateFabRipple()
+        public static IHtmlContent? GenerateFabRipple()
         {
             var fabRippleBuilder = new TagBuilder("span");
             fabRippleBuilder.AddCssClass("mdc-fab__ripple");
+            return fabRippleBuilder;
+        }
+
+        public static IHtmlContent? GenerateTabRipple()
+        {
+            var fabRippleBuilder = new TagBuilder("span");
+            fabRippleBuilder.AddCssClass("mdc-tab__ripple");
             return fabRippleBuilder;
         }
     }
