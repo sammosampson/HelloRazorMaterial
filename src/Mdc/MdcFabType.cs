@@ -1,4 +1,4 @@
-﻿namespace SystemDot.Web.Mdc
+﻿namespace SystemDot.Web.Razor.Mdc
 {
     public enum MdcFabType
     {

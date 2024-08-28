@@ -2,9 +2,9 @@
 using Microsoft.AspNetCore.Mvc.TagHelpers;
 using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using Microsoft.AspNetCore.Razor.TagHelpers;
-using SystemDot.Web.Mdc.Generation;
+using SystemDot.Web.Razor.Mdc.Generation;
 
-namespace SystemDot.Web.Mdc.TagHelpers
+namespace SystemDot.Web.Razor.Mdc.TagHelpers
 {
     [HtmlTargetElement("mdc-text-field")]
     public class MdcTextFieldTagHelper : TagHelper

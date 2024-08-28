@@ -1,9 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Mvc.TagHelpers;
 using Microsoft.AspNetCore.Razor.TagHelpers;
-using SystemDot.Web.Mdc.Generation;
+using SystemDot.Web.Razor.Mdc.Generation;
 
-namespace SystemDot.Web.Mdc.TagHelpers
+namespace SystemDot.Web.Razor.Mdc.TagHelpers
 {
     [HtmlTargetElement("mdc-drawer-scrim")]
     public class MdcDrawerScrimTagHelper : TagHelper

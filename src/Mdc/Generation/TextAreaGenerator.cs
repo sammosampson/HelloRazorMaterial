@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Html;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
-namespace SystemDot.Web.Mdc.Generation
+namespace SystemDot.Web.Razor.Mdc.Generation
 {
     public static class TextAreaGenerator
     {
