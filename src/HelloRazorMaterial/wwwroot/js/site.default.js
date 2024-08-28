@@ -67,12 +67,15 @@ function unhookup() {
     unhookup_charts();
 }
 
-function hookup_after_htmx_request() {
-    document.addEventListener('htmx:afterRequest', function (evt) {
-        unhookup();
+function hookup_htmx_events() {
+    document.addEventListener('htmx:afterSettle', function (evt) {
         hookup();
+    });
+
+    document.addEventListener('htmx:beforeRequest', function (evt) {
+        unhookup();
     });
 }
 
-hookup_after_htmx_request();
+hookup_htmx_events();
 hookup();

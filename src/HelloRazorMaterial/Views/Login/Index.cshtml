@@ -1,20 +1,22 @@
 ﻿
 <form class="centered-box" asp-controller=@nameof(Login)>
-    <mdc-field 
+    <mdc-text-field 
         id="email"
         name="Email"
         label="Email"
         field-type=Email>
-    </mdc-field>
-    <mdc-field 
+    </mdc-text-field>
+    <mdc-text-field 
         id="password"
         name="Password"
         label="Password"    
         field-type=Password>
-    </mdc-field>
+    </mdc-text-field>
     <mdc-button 
         id="login" 
-        button-type=Raised 
+        button-type=Raised
+        ripple
+        focus-ring
         label="Login">
     </mdc-button>
 </form>
