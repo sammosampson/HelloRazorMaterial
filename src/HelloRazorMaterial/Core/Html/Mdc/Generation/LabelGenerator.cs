@@ -5,11 +5,15 @@
 
     public static class LabelGenerator
     {
-        public static TagBuilder GenerateFloatingLabel(string id, string label)
+        public static TagBuilder GenerateFloatingLabel(string id, string label, bool floatAbove)
         {
             var labelBuilder = new TagBuilder("span");
-            labelBuilder.AddCssClass("mdc-floating-label");
             labelBuilder.Attributes.Add("id", id);
+            labelBuilder.AddCssClass("mdc-floating-label");
+            if (floatAbove)
+            {
+                labelBuilder.AddCssClass("mdc-floating-label--float-above");
+            }
             labelBuilder.InnerHtml.SetContent(label);
             return labelBuilder;
         }

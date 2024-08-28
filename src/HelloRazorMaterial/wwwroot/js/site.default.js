@@ -1,10 +1,11 @@
 ﻿/* 
     This file contains the default site-wide scripts  
 */
+const activeCharts = [];
 
 function hookup_chart(element) {
     var config = JSON.parse(document.getElementById(`${element.id}-chart-script`).textContent);
-    new Chart(element, config);
+    activeCharts.push(new Chart(element, config));
 }
 
 function hookup_charts() {
@@ -12,6 +13,13 @@ function hookup_charts() {
     for (const chart of charts) {
         hookup_chart(chart);
     }
+}
+
+function unhookup_charts() {
+    for (const chart of activeCharts) {
+        chart.destroy();
+    }
+    activeCharts.clear
 }
 
 function hookup_mdc_appbar_drawer() {
@@ -55,11 +63,19 @@ function hookup() {
     hookup_mdc_selects();
 }
 
-function hookup_after_htmx_request() {
-    document.addEventListener('htmx:afterRequest', function (evt) {
+function unhookup() {
+    unhookup_charts();
+}
+
+function hookup_htmx_events() {
+    document.addEventListener('htmx:afterSettle', function (evt) {
         hookup();
+    });
+
+    document.addEventListener('htmx:beforeRequest', function (evt) {
+        unhookup();
     });
 }
 
-hookup_after_htmx_request();
+hookup_htmx_events();
 hookup();

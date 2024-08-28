@@ -5,6 +5,9 @@
 
     public record FieldsModel : MenuModel
     {
-        public required IEnumerable<SelectListItem> Options { get; init; }
+        public string? SelectValue { get; set; }
+        public string? TextValue { get; set; }
+        public string? TextAreaValue { get; set; }
+        public IEnumerable<SelectListItem> Options { get; init; } = Enumerable.Empty<SelectListItem>();
     }
 }

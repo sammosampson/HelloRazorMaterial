@@ -1,35 +1,91 @@
 ﻿@model FieldsModel
 <mdc-grid>
     <mdc-grid-inner>
-        <mdc-grid-cell span=12>
-            <mdc-field 
-                id="outlined-text-field" 
-                label="Outlined" 
-                field-type=Text>
-            </mdc-field>
+        <mdc-grid-cell span=6>
+            <form asp-controller="@nameof(Fields)">
+                <mdc-grid-inner>
+                    <mdc-grid-cell span=12>
+                        <h5 class="mdc-typography--headline5">Outlined</h5>
+                    </mdc-grid-cell>
+                    <mdc-grid-cell span=12>
+                        <mdc-text-field id="outlined-text-field"
+                                   for=@Model.TextValue
+                                   label="Plain text"
+                                   name=@nameof(Model.TextValue)
+                                   field-type=Text>
+                        </mdc-text-field>
+                    </mdc-grid-cell>
+                    <mdc-grid-cell span=12>
+                        <mdc-select id="outlined-select-field"
+                                    label="Dropdown"
+                                    for=@Model.SelectValue
+                                    name=@nameof(Model.SelectValue)
+                                    items=@Model.Options>
+                        </mdc-select>
+                    </mdc-grid-cell>
+
+                    <mdc-grid-cell span=12>
+                        <mdc-text-area id="outlined-text-field"
+                                       for=@Model.TextAreaValue
+                                       label="TextArea"
+                                       rows=8 
+                                       cols=40
+                                       name=@nameof(Model.TextAreaValue)>
+                        </mdc-text-area>
+                    </mdc-grid-cell>
+
+                    <mdc-grid-cell span=12>
+                        <mdc-button id="post" label="Post" ripple focus-ring>
+                        </mdc-button>
+                    </mdc-grid-cell>
+
+                </mdc-grid-inner>
+            </form>
         </mdc-grid-cell>
-        <mdc-grid-cell span=12>
-            <mdc-field 
-                id="filled-text-field" 
-                label="Filled" 
-                field-type=Text 
-                variant=Filled>
-            </mdc-field>
-        </mdc-grid-cell>
-        <mdc-grid-cell span=12>
-            <mdc-select 
-                id="outlined-select-field" 
-                label="Outlined"
-                items=@Model.Options>
-            </mdc-select>
-        </mdc-grid-cell>
-        <mdc-grid-cell span=12>
-            <mdc-select 
-                id="filled-select-field" 
-                label="Filled"
-                items=@Model.Options
-                variant=Filled>
-            </mdc-select>
+
+        <mdc-grid-cell span=6>
+            <form asp-controller="@nameof(Fields)">
+                <mdc-grid-inner>
+                    <mdc-grid-cell span=12>
+                        <h5 class="mdc-typography--headline5">Filled</h5>
+                    </mdc-grid-cell>
+                    <mdc-grid-cell span=12>
+                        <mdc-text-field id="filled-text-field"
+                                   label="Plain text"
+                                   field-type=Text
+                                   for=@Model.TextValue
+                                   name=@nameof(Model.TextValue)
+                                   variant=Filled>
+                        </mdc-text-field>
+                    </mdc-grid-cell>
+                    <mdc-grid-cell span=12>
+                        <mdc-select id="filled-select-field"
+                                    label="Dropdown"
+                                    for=@Model.SelectValue
+                                    name=@nameof(Model.SelectValue)
+                                    items=@Model.Options
+                                    variant=Filled>
+                        </mdc-select>
+                    </mdc-grid-cell>
+
+                    <mdc-grid-cell span=12>
+                        <mdc-text-area id="outlined-text-field"
+                                       for=@Model.TextAreaValue
+                                       label="TextArea"
+                                       rows=8
+                                       cols=40
+                                       name=@nameof(Model.TextAreaValue)
+                                       variant=Filled>
+                        </mdc-text-area>
+                    </mdc-grid-cell>
+
+                    <mdc-grid-cell span=12>
+                        <mdc-button id="post" button-type=Raised label="Post" ripple focus-ring>
+                        </mdc-button>
+                    </mdc-grid-cell>
+
+                </mdc-grid-inner>
+            </form>
         </mdc-grid-cell>
     </mdc-grid-inner>
 </mdc-grid>

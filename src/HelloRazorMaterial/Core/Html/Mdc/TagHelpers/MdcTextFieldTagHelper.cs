@@ -7,8 +7,8 @@
     using Microsoft.AspNetCore.Mvc.ViewFeatures;
     using Microsoft.AspNetCore.Razor.TagHelpers;
 
-    [HtmlTargetElement("mdc-field")]
-    public class MdcFieldTagHelper : TagHelper
+    [HtmlTargetElement("mdc-text-field")]
+    public class MdcTextFieldTagHelper : TagHelper
     {
         public required string Id { get; set; }
         public required string Label { get; set; }
@@ -20,7 +20,7 @@
 
         public override void Process(TagHelperContext context, TagHelperOutput output)
         {
-            TagBuilder builder = FieldGenerator.GenerateField(Id, Label, Name, For?.Model.ToString(), FieldType, Variant, Required);
+            TagBuilder builder = TextFieldGenerator.GenerateTextField(Id, Label, Name, For?.Model?.ToString(), FieldType, Variant, Required);
             output.TagName = builder.TagName;
             output.MergeAttributes(builder);
             output.PostContent.AppendHtml(builder.InnerHtml);

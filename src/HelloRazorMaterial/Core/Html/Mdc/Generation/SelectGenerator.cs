@@ -3,35 +3,43 @@
     using HelloRazorMaterial.Core.Html.Mdc;
     using Microsoft.AspNetCore.Html;
     using Microsoft.AspNetCore.Mvc.Rendering;
+
     public static class SelectGenerator
     {
         public static TagBuilder GenerateSelect(
             string id,
-            string label,
+            string? label,
             string? name,
             string? value,
             IEnumerable<SelectListItem>? items,
             MdcVariant variant)
         {
-            TagBuilder selectBuilder = GenerateSelectContainer(id, variant);
+            TagBuilder selectBuilder = GenerateSelectContainer(id, label, variant);
             var selectContentBuilder = new HtmlContentBuilder();
 
             if (name != null)
             {
-                selectContentBuilder.AppendLine(InputGenerator.GeneratInput(name, MdcFieldType.Hidden));
+                selectContentBuilder.AppendLine(InputGenerator.GeneratInput(id, name, value, MdcFieldType.Hidden));
             }
 
-            selectContentBuilder.AppendLine(GenerateSelectAnchor(id, label, variant));
+            selectContentBuilder.AppendLine(GenerateSelectAnchor(id, label, variant, value));
             selectContentBuilder.AppendLine(GenerateSelectItems(items, value));
 
             selectBuilder.InnerHtml.SetHtmlContent(selectContentBuilder);
             return selectBuilder;
         }
 
-        private static TagBuilder GenerateSelectContainer(string id, MdcVariant variant)
+        private static TagBuilder GenerateSelectContainer(string id, string? label, MdcVariant variant)
         {
             var selectBuilder = new TagBuilder("div");
             selectBuilder.AddCssClass("mdc-select");
+
+            if(label is null)
+            {
+
+                selectBuilder.AddCssClass("mdc-select--no-label");
+
+            }
 
             switch (variant)
             {
@@ -49,39 +57,17 @@
             return selectBuilder;
         }
 
-        private static TagBuilder GenerateSelectAnchor(string id, string label, MdcVariant variant)
+        private static TagBuilder GenerateSelectAnchor(string id, string? label, MdcVariant variant, string? value)
         {
             TagBuilder selectAnchorBuilder = GenerateSelectAnchorContainer(id);
             var selectAnchorContentBuilder = new HtmlContentBuilder();
-            GenerateOutlineAndLabel(selectAnchorContentBuilder, id, label, variant);
+            FieldGenerator.GenerateOutlineAndLabel(selectAnchorContentBuilder, id, label, variant, value);
             selectAnchorContentBuilder.AppendLine(GenerateSelectedTextContainer());
             selectAnchorContentBuilder.AppendLine(GenerateDropdownIcon());
             selectAnchorContentBuilder.AppendLine(RippleGenerator.GenerateLineRipple());
 
             selectAnchorBuilder.InnerHtml.SetHtmlContent(selectAnchorContentBuilder);
             return selectAnchorBuilder;
-        }
-
-        private static void GenerateOutlineAndLabel(HtmlContentBuilder selectAnchorContentBuilder, string id, string label, MdcVariant variant)
-        {
-            switch (variant)
-            {
-                case MdcVariant.Outlined:
-                    TagBuilder outlineBuilder = OutlineGenerator.GenerateNotchedOutline();
-                    var outlineContentBuilder = new HtmlContentBuilder();
-                    outlineContentBuilder.AppendLine(OutlineGenerator.GenerateNotchedOutlineLeading());
-                    TagBuilder outlineNotchBuilder = OutlineGenerator.GenerateNotchedOutlineNotch();
-                    outlineContentBuilder.AppendLine(outlineNotchBuilder);
-                    outlineNotchBuilder.InnerHtml.SetHtmlContent(LabelGenerator.GenerateFloatingLabel(GetLabelId(id), label));
-                    outlineContentBuilder.AppendLine(OutlineGenerator.GenerateNotchedOutlineTrailing());
-                    outlineBuilder.InnerHtml.SetHtmlContent(outlineContentBuilder);
-                    selectAnchorContentBuilder.AppendLine(outlineBuilder);
-                    break;
-                case MdcVariant.Filled:
-                    selectAnchorContentBuilder.AppendLine(RippleGenerator.GenerateSelectRipple());
-                    selectAnchorContentBuilder.AppendLine(LabelGenerator.GenerateFloatingLabel(GetLabelId(id), label));
-                    break;
-            }
         }
 
         private static TagBuilder GenerateSelectAnchorContainer(string id)
@@ -91,11 +77,11 @@
             selectAnchorBuilder.Attributes.Add("role", "button");
             selectAnchorBuilder.Attributes.Add("aria-haspopup", "listbox");
             selectAnchorBuilder.Attributes.Add("aria-expanded", "false");
-            selectAnchorBuilder.Attributes.Add("aria-labelledby", GetLabelId(id));
+            selectAnchorBuilder.Attributes.Add("aria-labelledby", FieldGenerator.GetLabelId(id));
             return selectAnchorBuilder;
         }
 
-        private static TagBuilder GenerateSelectedTextContainer()
+        private static TagBuilder GenerateSelectedTextContainer() 
         {
             var selectedTextContainerBuilder = new TagBuilder("span");
             selectedTextContainerBuilder.AddCssClass("mdc-select__selected-text-container");
@@ -129,11 +115,6 @@
 
             selectMenuBuilder.InnerHtml.SetHtmlContent(listBuilder);
             return selectMenuBuilder;
-        }
-
-        private static string GetLabelId(string id)
-        {
-            return $"{id}-select-label";
         }
     }
 }

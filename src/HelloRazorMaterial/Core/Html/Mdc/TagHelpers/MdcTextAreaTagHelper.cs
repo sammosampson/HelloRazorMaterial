@@ -7,19 +7,21 @@
     using Microsoft.AspNetCore.Mvc.ViewFeatures;
     using Microsoft.AspNetCore.Razor.TagHelpers;
 
-    [HtmlTargetElement("mdc-select")]
-    public class MdcSelectTagHelper : TagHelper
+    [HtmlTargetElement("mdc-text-area")]
+    public class MdcTextAreaTagHelper : TagHelper
     {
         public required string Id { get; set; }
-        public required string Label { get; set; }
         public string? Name { get; set; }
+        public string? Label { get; set; }
+        public int Cols { get; set; }
+        public int Rows { get; set; }
         public ModelExpression? For { get; set; }
-        public IEnumerable<SelectListItem>? Items { get; set; }
         public MdcVariant Variant { get; set; }
+        public bool Required { get; set; }
 
         public override void Process(TagHelperContext context, TagHelperOutput output)
         {
-            TagBuilder builder = SelectGenerator.GenerateSelect(Id, Label, Name, For?.Model?.ToString(), Items, Variant);
+            TagBuilder builder = TextAreaGenerator.GenerateTextArea(Id, Rows, Cols, Label, Name, For?.Model?.ToString(), Variant, Required);
             output.TagName = builder.TagName;
             output.MergeAttributes(builder);
             output.PostContent.AppendHtml(builder.InnerHtml);

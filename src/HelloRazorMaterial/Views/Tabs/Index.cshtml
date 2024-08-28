@@ -1,0 +1,14 @@
+﻿@model TabsModel
+<form asp-controller=@nameof(Tabs) method="get">
+    <mdc-tab-bar>
+        <mdc-tab-scroller>
+            <mdc-tab-scroller-area>
+                <mdc-tab-scroller-content>
+                    <mdc-tab-button id="favorite-tab-button" name="tab" label="Favorites" icon="favorite" selected=@(Model.SelectedTab == 0) index=0></mdc-tab-button>
+                    <mdc-tab-button id="share-tab-button" name="tab" label="Share" icon="share" selected=@(Model.SelectedTab == 1) index=1></mdc-tab-button>
+                    <mdc-tab-button id="more-tab-button" name="tab" label="More" icon="description" selected=@(Model.SelectedTab == 2) index=2></mdc-tab-button>
+                </mdc-tab-scroller-content>
+            </mdc-tab-scroller-area>
+        </mdc-tab-scroller>
+    </mdc-tab-bar>
+</form>
