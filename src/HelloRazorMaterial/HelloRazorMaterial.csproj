@@ -12,4 +12,12 @@
     <PackageReference Include="Microsoft.AspNetCore.Authentication.Cookies" Version="2.2.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Core\Html\Mdc\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Mdc\Mdc.csproj" />
+  </ItemGroup>
+
 </Project>
