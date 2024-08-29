@@ -5,6 +5,11 @@
         Text,
         Email,
         Password,
+        Number,
+        Time,
+        Date,
+        LocalDate,
+        Telephone,
         Hidden
     }
 }
