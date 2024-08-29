@@ -15,6 +15,82 @@
                                    field-type=Text>
                         </mdc-text-field>
                     </mdc-grid-cell>
+
+                    <mdc-grid-cell span=12>
+                        <mdc-text-field id="outlined-email-field"
+                                        label="Email"
+                                        field-type=Email
+                                        for=@Model.EmailValue
+                                        name=@nameof(Model.EmailValue)>
+                        </mdc-text-field>
+                    </mdc-grid-cell>
+
+                    <mdc-grid-cell span=12>
+                        <mdc-text-field id="outlined-password-field"
+                                        label="Password"
+                                        field-type=Password
+                                        for=@Model.PasswordValue
+                                        name=@nameof(Model.PasswordValue)>
+                        </mdc-text-field>
+                    </mdc-grid-cell>
+
+                    <mdc-grid-cell span=12>
+                        <mdc-text-field id="outlined-number-field"
+                                        label="Number"
+                                        field-type=Number
+                                        for=@Model.NumberValue
+                                        name=@nameof(Model.NumberValue)>
+                        </mdc-text-field>
+                    </mdc-grid-cell>
+
+                    <mdc-grid-cell span=12>
+                        <mdc-text-field id="outlined-money-field"
+                                        label="Money"
+                                        field-type=Number
+                                        for=@Model.MoneyValue
+                                        name=@nameof(Model.MoneyValue)
+                                        prefix="£"
+                                        suffix=".00"
+                                        class="text-right">
+                        </mdc-text-field>
+                    </mdc-grid-cell>
+
+                    <mdc-grid-cell span=12>
+                        <mdc-text-field id="outlined-time-field"
+                                        label="Time"
+                                        field-type=Time
+                                        for=@Model.TimeValue
+                                        name=@nameof(Model.TimeValue)>
+                        </mdc-text-field>
+                    </mdc-grid-cell>
+
+                    <mdc-grid-cell span=12>
+                        <mdc-text-field id="outlined-date-field"
+                                        label="Date"
+                                        field-type=Date
+                                        for=@Model.DateValue
+                                        name=@nameof(Model.DateValue)>
+                        </mdc-text-field>
+                    </mdc-grid-cell>
+
+                    <mdc-grid-cell span=12>
+                        <mdc-text-field id="outlined-local-date-field"
+                                        label="LocalDate"
+                                        field-type=LocalDate
+                                        for=@Model.LocalDateValue
+                                        name=@nameof(Model.LocalDateValue)>
+                        </mdc-text-field>
+                    </mdc-grid-cell>
+
+                    <mdc-grid-cell span=12>
+                        <mdc-text-field id="outlined-telephone-field"
+                                        label="Telephone"
+                                        field-type=Telephone
+                                        for=@Model.TelephoneValue
+                                        name=@nameof(Model.TelephoneValue)>
+                        </mdc-text-field>
+                    </mdc-grid-cell>
+
                     <mdc-grid-cell span=12>
                         <mdc-select id="outlined-select-field"
                                     label="Dropdown"
@@ -25,7 +101,7 @@
                     </mdc-grid-cell>
 
                     <mdc-grid-cell span=12>
-                        <mdc-text-area id="outlined-text-field"
+                        <mdc-text-area id="outlined-text-area-field"
                                        for=@Model.TextAreaValue
                                        label="TextArea"
                                        rows=8 
@@ -35,7 +111,7 @@
                     </mdc-grid-cell>
 
                     <mdc-grid-cell span=12>
-                        <mdc-button id="post" label="Post" ripple focus-ring>
+                        <mdc-button id="outlined-post" label="Post" ripple focus-ring>
                         </mdc-button>
                     </mdc-grid-cell>
 
@@ -58,6 +134,91 @@
                                    variant=Filled>
                         </mdc-text-field>
                     </mdc-grid-cell>
+
+                    <mdc-grid-cell span=12>
+                        <mdc-text-field id="filled-email-field"
+                                        label="Email"
+                                        field-type=Email
+                                        for=@Model.EmailValue
+                                        name=@nameof(Model.EmailValue)
+                                        variant=Filled>
+                        </mdc-text-field>
+                    </mdc-grid-cell>
+
+                    <mdc-grid-cell span=12>
+                        <mdc-text-field id="filled-password-field"
+                                        label="Password"
+                                        field-type=Password
+                                        for=@Model.PasswordValue
+                                        name=@nameof(Model.PasswordValue)
+                                        variant=Filled>
+                        </mdc-text-field>
+                    </mdc-grid-cell>
+
+
+                    <mdc-grid-cell span=12>
+                        <mdc-text-field id="filled-number-field"
+                                        label="Number"
+                                        field-type=Number
+                                        for=@Model.NumberValue
+                                        name=@nameof(Model.NumberValue)
+                                        variant=Filled>
+                        </mdc-text-field>
+                    </mdc-grid-cell>
+
+                    <mdc-grid-cell span=12>
+                        <mdc-text-field id="filled-money-field"
+                                        label="Money"
+                                        field-type=Number
+                                        for=@Model.MoneyValue
+                                        name=@nameof(Model.MoneyValue)
+                                        prefix="£"
+                                        suffix=".00"
+                                        variant=Filled
+                                        class="text-right">
+                        </mdc-text-field>
+                    </mdc-grid-cell>
+
+                    <mdc-grid-cell span=12>
+                        <mdc-text-field id="filled-time-field"
+                                        label="Time"
+                                        field-type=Time
+                                        for=@Model.TimeValue
+                                        name=@nameof(Model.TimeValue)
+                                        variant=Filled>
+                        </mdc-text-field>
+                    </mdc-grid-cell>
+
+                    <mdc-grid-cell span=12>
+                        <mdc-text-field id="filled-date-field"
+                                        label="Date"
+                                        field-type=Date
+                                        for=@Model.DateValue
+                                        name=@nameof(Model.DateValue)
+                                        variant=Filled>
+                        </mdc-text-field>
+                    </mdc-grid-cell>
+
+                    <mdc-grid-cell span=12>
+                        <mdc-text-field id="filled-local-date-field"
+                                        label="LocalDate"
+                                        field-type=LocalDate
+                                        for=@Model.LocalDateValue
+                                        name=@nameof(Model.LocalDateValue)
+                                        variant=Filled>
+                        </mdc-text-field>
+                    </mdc-grid-cell>
+
+                    <mdc-grid-cell span=12>
+                        <mdc-text-field id="filled-telephone-field"
+                                        label="Telephone"
+                                        field-type=Telephone
+                                        for=@Model.TelephoneValue
+                                        name=@nameof(Model.TelephoneValue)
+                                        variant=Filled>
+                        </mdc-text-field>
+                    </mdc-grid-cell>
+
                     <mdc-grid-cell span=12>
                         <mdc-select id="filled-select-field"
                                     label="Dropdown"
@@ -69,7 +230,7 @@
                     </mdc-grid-cell>
 
                     <mdc-grid-cell span=12>
-                        <mdc-text-area id="outlined-text-field"
+                        <mdc-text-area id="filled-text-area-field"
                                        for=@Model.TextAreaValue
                                        label="TextArea"
                                        rows=8
@@ -80,7 +241,7 @@
                     </mdc-grid-cell>
 
                     <mdc-grid-cell span=12>
-                        <mdc-button id="post" button-type=Raised label="Post" ripple focus-ring>
+                        <mdc-button id="filled-post" label="Post" button-type=Raised ripple focus-ring>
                         </mdc-button>
                     </mdc-grid-cell>
 

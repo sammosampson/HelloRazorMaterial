@@ -18,7 +18,7 @@ namespace SystemDot.Web.Razor.Mdc.Generation
 
             if (name != null)
             {
-                selectContentBuilder.AppendLine(InputGenerator.GeneratInput(id, name, value, MdcFieldType.Hidden));
+                selectContentBuilder.AppendLine(InputGenerator.GenerateInput(id, name, value, MdcFieldType.Hidden, Enumerable.Empty<string>()));
             }
 
             selectContentBuilder.AppendLine(GenerateSelectAnchor(id, label, variant, value));

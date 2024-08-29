@@ -5,7 +5,7 @@ namespace SystemDot.Web.Razor.Mdc.Generation
 {
     public static class InputGenerator
     {
-        public static TagBuilder GeneratInput(string id, string? name, string? value, MdcFieldType fieldType, string? cssClass = null, bool required = false)
+        public static TagBuilder GenerateInput(string id, string? name, string? value, MdcFieldType fieldType, IEnumerable<string> cssClasses, bool required = false)
         {
             var hiddenInputBuilder = new TagBuilder("input");
             hiddenInputBuilder.Attributes.Add("id", id);
@@ -21,7 +21,7 @@ namespace SystemDot.Web.Razor.Mdc.Generation
                 hiddenInputBuilder.Attributes.Add("value", value);
             }
 
-            if (cssClass != null)
+            foreach (string cssClass in cssClasses)
             {
                 hiddenInputBuilder.AddCssClass(cssClass);
             }
@@ -79,6 +79,16 @@ namespace SystemDot.Web.Razor.Mdc.Generation
                     return "email";
                 case MdcFieldType.Password:
                     return "password";
+                case MdcFieldType.Number:
+                    return "number";
+                case MdcFieldType.Time:
+                    return "time";
+                case MdcFieldType.Date:
+                    return "date";
+                case MdcFieldType.LocalDate:
+                    return "datetime-local";
+                case MdcFieldType.Telephone:
+                    return "tel";
                 case MdcFieldType.Hidden:
                     return "hidden";
             }
