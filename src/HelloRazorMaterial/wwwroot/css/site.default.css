@@ -34,3 +34,7 @@
 .text-right {
     text-align: right;
 }
+
+.mdc-data-table__header-cell {
+    font-weight: bold;
+}
