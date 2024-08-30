@@ -48,6 +48,13 @@ function hookup_mdc_tables() {
     }
 }
 
+function hookup_mdc_dialogs() {
+    const elements = document.querySelectorAll('.mdc-dialog');
+    for (const element of elements) {
+        mdc.dialog.MDCDialog.attachTo(element);
+    }
+}
+
 function hookup_mdc_selects() {
     const selects = document.querySelectorAll('.mdc-select');
     for (const select of selects) {
@@ -67,6 +74,7 @@ function hookup() {
     hookup_mdc_appbar_drawer();
     hookup_mdc_buttons();
     hookup_mdc_tables();
+    hookup_mdc_dialogs();
     hookup_mdc_text_fields();
     hookup_mdc_selects();
 }
