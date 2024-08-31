@@ -4,9 +4,9 @@
         <mdc-tab-scroller>
             <mdc-tab-scroller-area>
                 <mdc-tab-scroller-content>
-                    <mdc-tab-button id="favorite-tab-button" name="tab" label="Favorites" icon="favorite" selected=@(Model.SelectedTab == 0) index=0></mdc-tab-button>
-                    <mdc-tab-button id="share-tab-button" name="tab" label="Share" icon="share" selected=@(Model.SelectedTab == 1) index=1></mdc-tab-button>
-                    <mdc-tab-button id="more-tab-button" name="tab" label="More" icon="description" selected=@(Model.SelectedTab == 2) index=2></mdc-tab-button>
+                    <mdc-tab-button id="favorite-tab-button" name="tab" value="0" label="Favorites" icon="favorite" selected=@(Model.SelectedTab == 0) index=0></mdc-tab-button>
+                    <mdc-tab-button id="share-tab-button" name="tab" value="1" label="Share" icon="share" selected=@(Model.SelectedTab == 1) index=1></mdc-tab-button>
+                    <mdc-tab-button id="more-tab-button" name="tab" value="2" label="More" icon="description" selected=@(Model.SelectedTab == 2) index=2></mdc-tab-button>
                 </mdc-tab-scroller-content>
             </mdc-tab-scroller-area>
         </mdc-tab-scroller>
