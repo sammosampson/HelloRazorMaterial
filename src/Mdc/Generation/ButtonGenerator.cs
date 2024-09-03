@@ -43,8 +43,7 @@ namespace SystemDot.Web.Razor.Mdc.Generation {
             return builder;
         }
 
-        public static TagBuilder GenerateCardActionButton(string id, string? label, bool ripple, bool touch,
-            bool disabled) {
+        public static TagBuilder GenerateCardActionButton(string id, string? label, bool ripple, bool touch, bool disabled) {
             TagBuilder builder = GenerateContainer(id, MdcButtonType.None, MdcIconType.None, false, disabled);
             builder.AddCssClass("mdc-card__action");
             builder.AddCssClass("mdc-card__action--button");
@@ -74,8 +73,78 @@ namespace SystemDot.Web.Razor.Mdc.Generation {
             return builder;
         }
 
-        public static TagBuilder GenerateCardActionIconButton(string id, string? title, bool ripple, bool touch,
-            bool disabled) {
+        public static TagBuilder GenerateTopAppBarNavIconButton(string id, string? title, bool ripple, bool touch, bool disabled) {
+            TagBuilder builder = GenerateBaseContainer(id, touch, disabled);
+            AddMaterialIconsClass(builder);
+            AddIconButtonClass(builder);
+            builder.AddCssClass("mdc-top-app-bar__navigation-icon");
+
+            if (title != null)
+            {
+                builder.Attributes.Add("title", title);
+            }
+
+            var contentBuilder = new HtmlContentBuilder();
+
+            if (ripple)
+            {
+                contentBuilder.AppendHtml(RippleGenerator.GenerateButtonRipple());
+            }
+
+            if (touch)
+            {
+                contentBuilder.AppendHtml(GenerateTouch());
+            }
+            
+            builder.InnerHtml.SetHtmlContent(contentBuilder);
+
+            if (touch)
+            {
+                var touchWrapperBuilder = TouchGenerator.GenerateTouchWrapper();
+                touchWrapperBuilder.InnerHtml.SetHtmlContent(builder);
+                return touchWrapperBuilder;
+            }
+
+            return builder;
+        }
+
+        public static TagBuilder GenerateTopAppBarActionIconButton(string id, string? label, bool ripple, bool touch, bool disabled)
+        {
+            TagBuilder builder = GenerateBaseContainer(id, touch, disabled);
+            AddMaterialIconsClass(builder);
+            AddIconButtonClass(builder);
+            builder.AddCssClass("mdc-top-app-bar__action-item");
+
+            if (label != null)
+            {
+                builder.Attributes.Add("aria-label", label);
+            }
+
+            var contentBuilder = new HtmlContentBuilder();
+
+            if (ripple)
+            {
+                contentBuilder.AppendHtml(RippleGenerator.GenerateButtonRipple());
+            }
+
+            if (touch)
+            {
+                contentBuilder.AppendHtml(GenerateTouch());
+            }
+
+            builder.InnerHtml.SetHtmlContent(contentBuilder);
+
+            if (touch)
+            {
+                var touchWrapperBuilder = TouchGenerator.GenerateTouchWrapper();
+                touchWrapperBuilder.InnerHtml.SetHtmlContent(builder);
+                return touchWrapperBuilder;
+            }
+
+            return builder;
+        }
+
+        public static TagBuilder GenerateCardActionIconButton(string id, string? title, bool ripple, bool touch, bool disabled) {
             TagBuilder builder = GenerateContainer(id, MdcButtonType.None, MdcIconType.None, touch, disabled);
             AddMaterialIconsClass(builder);
             AddIconButtonClass(builder);
@@ -95,8 +164,6 @@ namespace SystemDot.Web.Razor.Mdc.Generation {
             if (touch) {
                 contentBuilder.AppendHtml(GenerateTouch());
             }
-
-
 
             builder.InnerHtml.SetHtmlContent(contentBuilder);
 
@@ -158,8 +225,7 @@ namespace SystemDot.Web.Razor.Mdc.Generation {
         }
 
         private static TagBuilder GenerateContainer(string id, MdcButtonType buttonType, MdcIconType iconType, bool touch, bool disabled) {
-            var builder = new TagBuilder("button");
-            builder.Attributes.Add("id", id);
+            var builder = GenerateBaseContainer(id, touch, disabled);
             builder.AddCssClass("mdc-button");
 
             switch (iconType) {
@@ -183,11 +249,21 @@ namespace SystemDot.Web.Razor.Mdc.Generation {
                     break;
             }
 
-            if (disabled) {
+            return builder;
+        }
+
+        private static TagBuilder GenerateBaseContainer(string id, bool touch, bool disabled)
+        {
+            var builder = new TagBuilder("button");
+            builder.Attributes.Add("id", id);
+            
+            if (disabled)
+            {
                 builder.Attributes.Add("disabled", "");
             }
 
-            if (touch) {
+            if (touch)
+            {
                 builder.AddCssClass("mdc-button--touch");
             }
 

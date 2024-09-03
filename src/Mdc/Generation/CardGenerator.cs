@@ -26,6 +26,13 @@ namespace SystemDot.Web.Razor.Mdc.Generation
             return builder;
         }
 
+        public static TagBuilder GenerateContent() {
+            var builder = new TagBuilder("div");
+            builder.AddCssClass("mdc-card__content");
+
+            return builder;
+        }
+
         public static TagBuilder GenerateCardMedia(MdcCardMediaSize mediaSize) {
             var builder = new TagBuilder("div");
 

@@ -9,7 +9,7 @@
 		<RootNamespace>SystemDot.Web.Razor.Mdc</RootNamespace>
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 		<PackageId>SystemDot.Web.Razor.Mdc</PackageId>
-		<Version>1.0.2</Version>
+		<Version>1.1.0</Version>
 		<Authors>Chris Sampson, James Goodenough</Authors>
 		<PackageDescription>Material design tag helpers components web package for asp.net core</PackageDescription>
 		<PackageTags>tag-helpers mdc material-design-components aspnet-core</PackageTags>
