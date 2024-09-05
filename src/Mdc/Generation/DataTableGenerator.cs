@@ -46,10 +46,13 @@ public class DataTableGenerator {
         return builder;
     }
 
-    public static TagBuilder GenerateTableBodyRow()
+    public static TagBuilder GenerateTableBodyRow(bool selected)
     {
         var builder = new TagBuilder("tr");
         builder.AddCssClass("mdc-data-table__row");
+        if(selected) {
+            builder.AddCssClass("mdc-data-table__row--selected");
+        }
         return builder;
     }
 
