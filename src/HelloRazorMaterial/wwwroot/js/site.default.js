@@ -34,6 +34,14 @@ function hookup_mdc_appbar_drawer() {
     });
 }
 
+function hookup_mdc_banners() {
+    const banners = document.querySelectorAll('.mdc-banner');
+    for (const bannerElment of banners) {
+        const banner = mdc.banner.MDCBanner.attachTo(bannerElment);
+        banner.open();
+    }
+}
+
 function hookup_mdc_buttons() {
     const buttons = document.querySelectorAll('.mdc-button');
     for (const button of buttons) {
@@ -65,13 +73,14 @@ function hookup_mdc_selects() {
 function hookup_mdc_text_fields() {
     const textFields = document.querySelectorAll('.mdc-text-field');
     for (const textField of textFields) {
-        mdc.textField.MDCTextField.attachTo(textField);
+        const banner = mdc.textField.MDCTextField.attachTo(textField);
     }
 }
 
 function hookup() {
     hookup_charts();
     hookup_mdc_appbar_drawer();
+    hookup_mdc_banners();
     hookup_mdc_buttons();
     hookup_mdc_tables();
     hookup_mdc_dialogs();

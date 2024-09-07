@@ -25,13 +25,6 @@ namespace SystemDot.Web.Razor.Mdc.Generation
 
             builder.InnerHtml.SetHtmlContent(contentBuilder);
 
-            if (touch)
-            {
-                var touchWrapperBuilder = TouchGenerator.GenerateTouchWrapper();
-                touchWrapperBuilder.InnerHtml.SetHtmlContent(builder);
-                return touchWrapperBuilder;
-            }
-
             return builder;
         }
 

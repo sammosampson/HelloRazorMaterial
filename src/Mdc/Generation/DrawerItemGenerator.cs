@@ -25,7 +25,9 @@ namespace SystemDot.Web.Razor.Mdc.Generation
 
             if (icon != null)
             {
-                contentBuilder.AppendHtml(GenerateIcon(icon));
+                var iconBuiilder = IconGenerator.GenerateDrawerIcon();
+                iconBuiilder.InnerHtml.SetContent(icon);
+                contentBuilder.AppendHtml(iconBuiilder);
             }
 
             if (text != null)
@@ -35,16 +37,6 @@ namespace SystemDot.Web.Razor.Mdc.Generation
 
             builder.InnerHtml.SetHtmlContent(contentBuilder);
 
-            return builder;
-        }
-
-        private static IHtmlContent? GenerateIcon(string icon)
-        {
-            var builder = new TagBuilder("i");
-            builder.AddCssClass("material-icons");
-            builder.AddCssClass("mdc-deprecated-list-item__graphic");
-            builder.Attributes.Add("aria-hidden", "true");
-            builder.InnerHtml.SetContent(icon);
             return builder;
         }
 
