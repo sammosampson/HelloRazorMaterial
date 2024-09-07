@@ -12,13 +12,14 @@ namespace SystemDot.Web.Razor.Mdc.TagHelpers
         public required string Id { get; set; }
         public required string Label { get; set; }
         public string? Name { get; set; }
+        public string? Value { get; set; }
         public ModelExpression? For { get; set; }
         public IEnumerable<SelectListItem>? Items { get; set; }
         public MdcVariant Variant { get; set; }
 
         public override void Process(TagHelperContext context, TagHelperOutput output)
         {
-            TagBuilder builder = SelectGenerator.GenerateSelect(Id, Label, Name, For?.Model?.ToString(), Items, Variant);
+            TagBuilder builder = SelectGenerator.GenerateSelect(Id, Label, Name, Value ?? For?.Model?.ToString(), Items, Variant);
             output.TagName = builder.TagName;
             output.MergeAttributes(builder);
             output.PostContent.AppendHtml(builder.InnerHtml);

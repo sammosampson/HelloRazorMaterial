@@ -1,44 +1,40 @@
 ﻿using Microsoft.AspNetCore.Html;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
-namespace SystemDot.Web.Razor.Mdc.Generation
-{
-    public static class ButtonGenerator
-    {
-        public static TagBuilder GenerateButton(string id, string? label, MdcButtonType buttonType, MdcIconType iconType, string? icon, bool ripple, bool focusRing, bool touch, bool disabled)
-        {
+namespace SystemDot.Web.Razor.Mdc.Generation {
+    public static class ButtonGenerator {
+        public static TagBuilder GenerateButton(string id, string? label, MdcButtonType buttonType,
+            MdcIconType iconType, string? icon, bool ripple, bool focusRing, bool touch, bool disabled) {
             TagBuilder builder = GenerateContainer(id, buttonType, iconType, touch, disabled);
             var contentBuilder = new HtmlContentBuilder();
 
-            if (ripple)
-            {
+            if (ripple) {
                 contentBuilder.AppendHtml(RippleGenerator.GenerateButtonRipple());
             }
-            if (focusRing)
-            {
+
+            if (focusRing) {
                 contentBuilder.AppendHtml(GenerateFocusRing());
             }
-            if (touch)
-            {
+
+            if (touch) {
                 contentBuilder.AppendHtml(GenerateTouch());
             }
-            if (label != null && iconType != MdcIconType.Leading)
-            {
+
+            if (label != null && iconType != MdcIconType.Leading) {
                 contentBuilder.AppendHtml(GenerateLabel(label));
             }
-            if (icon != null)
-            {
+
+            if (icon != null) {
                 contentBuilder.AppendHtml(GenerateIcon(icon));
             }
-            if (label != null && iconType == MdcIconType.Leading)
-            {
+
+            if (label != null && iconType == MdcIconType.Leading) {
                 contentBuilder.AppendHtml(GenerateLabel(label));
             }
 
             builder.InnerHtml.SetHtmlContent(contentBuilder);
 
-            if (touch)
-            {
+            if (touch) {
                 var touchWrapperBuilder = TouchGenerator.GenerateTouchWrapper();
                 touchWrapperBuilder.InnerHtml.SetHtmlContent(builder);
                 return touchWrapperBuilder;
@@ -51,28 +47,24 @@ namespace SystemDot.Web.Razor.Mdc.Generation
             TagBuilder builder = GenerateContainer(id, MdcButtonType.None, MdcIconType.None, false, disabled);
             builder.AddCssClass("mdc-card__action");
             builder.AddCssClass("mdc-card__action--button");
-            
+
             var contentBuilder = new HtmlContentBuilder();
 
-            if (ripple)
-            {
+            if (ripple) {
                 contentBuilder.AppendHtml(RippleGenerator.GenerateButtonRipple());
             }
 
-            if (touch)
-            {
+            if (touch) {
                 contentBuilder.AppendHtml(GenerateTouch());
             }
 
-            if (label != null)
-            {
+            if (label != null) {
                 contentBuilder.AppendHtml(GenerateLabel(label));
             }
 
             builder.InnerHtml.SetHtmlContent(contentBuilder);
 
-            if (touch)
-            {
+            if (touch) {
                 var touchWrapperBuilder = TouchGenerator.GenerateTouchWrapper();
                 touchWrapperBuilder.InnerHtml.SetHtmlContent(builder);
                 return touchWrapperBuilder;
@@ -81,14 +73,12 @@ namespace SystemDot.Web.Razor.Mdc.Generation
             return builder;
         }
 
-        public static TagBuilder GenerateCardActionIconButton(string id, string? title, bool ripple, bool touch, bool disabled)
-        {
-            TagBuilder builder = GenerateContainer(id, MdcButtonType.None, MdcIconType.None, false, disabled);
-            builder.AddCssClass("material-icons");
-            builder.AddCssClass("mdc-icon-button");
-            builder.AddCssClass("mdc-card__action");
-            builder.AddCssClass("mdc-card__action--icon");
-            
+        public static TagBuilder GenerateTopAppBarNavIconButton(string id, string? title, bool ripple, bool touch, bool disabled) {
+            TagBuilder builder = GenerateBaseContainer(id, touch, disabled);
+            AddMaterialIconsClass(builder);
+            AddIconButtonClass(builder);
+            builder.AddCssClass("mdc-top-app-bar__navigation-icon");
+
             if (title != null)
             {
                 builder.Attributes.Add("title", title);
@@ -105,8 +95,42 @@ namespace SystemDot.Web.Razor.Mdc.Generation
             {
                 contentBuilder.AppendHtml(GenerateTouch());
             }
-
             
+            builder.InnerHtml.SetHtmlContent(contentBuilder);
+
+            if (touch)
+            {
+                var touchWrapperBuilder = TouchGenerator.GenerateTouchWrapper();
+                touchWrapperBuilder.InnerHtml.SetHtmlContent(builder);
+                return touchWrapperBuilder;
+            }
+
+            return builder;
+        }
+
+        public static TagBuilder GenerateTopAppBarActionIconButton(string id, string? label, bool ripple, bool touch, bool disabled)
+        {
+            TagBuilder builder = GenerateBaseContainer(id, touch, disabled);
+            AddMaterialIconsClass(builder);
+            AddIconButtonClass(builder);
+            builder.AddCssClass("mdc-top-app-bar__action-item");
+
+            if (label != null)
+            {
+                builder.Attributes.Add("aria-label", label);
+            }
+
+            var contentBuilder = new HtmlContentBuilder();
+
+            if (ripple)
+            {
+                contentBuilder.AppendHtml(RippleGenerator.GenerateButtonRipple());
+            }
+
+            if (touch)
+            {
+                contentBuilder.AppendHtml(GenerateTouch());
+            }
 
             builder.InnerHtml.SetHtmlContent(contentBuilder);
 
@@ -120,14 +144,91 @@ namespace SystemDot.Web.Razor.Mdc.Generation
             return builder;
         }
 
-        private static TagBuilder GenerateContainer(string id, MdcButtonType buttonType, MdcIconType iconType, bool touch, bool disabled)
-        {
+        public static TagBuilder GenerateCardActionIconButton(string id, string? title, bool ripple, bool touch, bool disabled) {
+            TagBuilder builder = GenerateContainer(id, MdcButtonType.None, MdcIconType.None, touch, disabled);
+            AddMaterialIconsClass(builder);
+            AddIconButtonClass(builder);
+            builder.AddCssClass("mdc-card__action");
+            builder.AddCssClass("mdc-card__action--icon");
+
+            if (title != null) {
+                builder.Attributes.Add("title", title);
+            }
+
+            var contentBuilder = new HtmlContentBuilder();
+
+            if (ripple) {
+                contentBuilder.AppendHtml(RippleGenerator.GenerateButtonRipple());
+            }
+
+            if (touch) {
+                contentBuilder.AppendHtml(GenerateTouch());
+            }
+
+            builder.InnerHtml.SetHtmlContent(contentBuilder);
+
+            if (touch) {
+                var touchWrapperBuilder = TouchGenerator.GenerateTouchWrapper();
+                touchWrapperBuilder.InnerHtml.SetHtmlContent(builder);
+                return touchWrapperBuilder;
+            }
+
+            return builder;
+        }
+
+        public static TagBuilder GenerateDialogHeaderCloseButton(string id) {
             var builder = new TagBuilder("button");
             builder.Attributes.Add("id", id);
+            AddMaterialIconsClass(builder);
+            AddIconButtonClass(builder);
+            builder.AddCssClass("mdc-dialog__close");
+            AddDialogAction(MdcActionType.Close, builder);
+            builder.InnerHtml.SetContent("close");
+            return builder;
+        }
+
+        public static TagBuilder GenerateDialogActionButton(string id, string? label, MdcActionType actionType, bool @default, bool ripple, bool touch, bool disabled) {
+            TagBuilder builder = GenerateContainer(id, MdcButtonType.None, MdcIconType.None, touch, disabled);
+            builder.AddCssClass("mdc-dialog__button");
+
+            if (@default) {
+                builder.AddCssClass("data-mdc-dialog-button-default");
+            }
+
+            if (actionType != MdcActionType.None) {
+                AddDialogAction(actionType, builder);
+            }
+
+            var contentBuilder = new HtmlContentBuilder();
+
+            if (ripple) {
+                contentBuilder.AppendHtml(RippleGenerator.GenerateButtonRipple());
+            }
+            
+            if (touch) {
+                contentBuilder.AppendHtml(GenerateTouch());
+            }
+
+            if (label != null) {
+                contentBuilder.AppendHtml(GenerateLabel(label));
+            }
+
+            builder.InnerHtml.SetHtmlContent(contentBuilder);
+
+            if (touch) {
+                var touchWrapperBuilder = TouchGenerator.GenerateTouchWrapper();
+                touchWrapperBuilder.InnerHtml.SetHtmlContent(builder);
+                return touchWrapperBuilder;
+            }
+
+            return builder;
+        }
+
+        private static TagBuilder GenerateContainer(string id, MdcButtonType buttonType, MdcIconType iconType, bool touch, bool disabled) {
+            var builder = GenerateBaseContainer(id, touch, disabled);
             builder.AddCssClass("mdc-button");
 
-            switch (iconType)
-            {
+            switch (iconType) {
                 case MdcIconType.Leading:
                     builder.AddCssClass("mdc-button--icon-leading");
                     break;
@@ -136,8 +237,7 @@ namespace SystemDot.Web.Razor.Mdc.Generation
                     break;
             }
 
-            switch (buttonType)
-            {
+            switch (buttonType) {
                 case MdcButtonType.Outlined:
                     builder.AddCssClass("mdc-button--outlined");
                     break;
@@ -149,6 +249,14 @@ namespace SystemDot.Web.Razor.Mdc.Generation
                     break;
             }
 
+            return builder;
+        }
+
+        private static TagBuilder GenerateBaseContainer(string id, bool touch, bool disabled)
+        {
+            var builder = new TagBuilder("button");
+            builder.Attributes.Add("id", id);
+            
             if (disabled)
             {
                 builder.Attributes.Add("disabled", "");
@@ -162,22 +270,19 @@ namespace SystemDot.Web.Razor.Mdc.Generation
             return builder;
         }
 
-        private static TagBuilder GenerateFocusRing()
-        {
+        private static TagBuilder GenerateFocusRing() {
             var builder = new TagBuilder("span");
             builder.AddCssClass("mdc-button__focus-ring");
             return builder;
         }
 
-        private static TagBuilder GenerateTouch()
-        {
+        private static TagBuilder GenerateTouch() {
             var builder = new TagBuilder("span");
             builder.AddCssClass("mdc-button__touch");
             return builder;
         }
 
-        private static IHtmlContent GenerateIcon(string icon)
-        {
+        private static IHtmlContent GenerateIcon(string icon) {
             var builder = new TagBuilder("i");
             builder.AddCssClass("material-icons");
             builder.AddCssClass("mdc-button__icon");
@@ -186,12 +291,38 @@ namespace SystemDot.Web.Razor.Mdc.Generation
             return builder;
         }
 
-        private static IHtmlContent GenerateLabel(string label)
-        {
+        private static IHtmlContent GenerateLabel(string label) {
             var builder = new TagBuilder("span");
             builder.AddCssClass("mdc-button__label");
             builder.InnerHtml.SetContent(label);
             return builder;
+        }
+
+        private static void AddMaterialIconsClass(TagBuilder builder) {
+            builder.AddCssClass("material-icons");
+        }
+
+        private static void AddIconButtonClass(TagBuilder builder)
+        {
+            builder.AddCssClass("mdc-icon-button");
+        }
+
+        private static void AddDialogAction(MdcActionType actionType, TagBuilder builder)
+        {
+            builder.Attributes.Add("data-mdc-dialog-action", GetActionType(actionType));
+        }
+
+        private static string GetActionType(MdcActionType actionType) {
+            switch (actionType) {
+                case MdcActionType.Ok:
+                    return "ok";
+                case MdcActionType.Accept:
+                    return "accept";
+                case MdcActionType.Close:
+                    return "close";
+            }
+
+            throw new NotImplementedException();
         }
     }
 }

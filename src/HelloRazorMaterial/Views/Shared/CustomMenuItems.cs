@@ -5,6 +5,8 @@ using HelloRazorMaterial.Controllers.Text;
 using HelloRazorMaterial.Controllers.Grids;
 using HelloRazorMaterial.Controllers.Tabs;
 using HelloRazorMaterial.Controllers.Account;
+using HelloRazorMaterial.Controllers.DataTables;
+using HelloRazorMaterial.Controllers.Dialogs;
 
 namespace HelloRazorMaterial.Views.Shared;
 
@@ -19,6 +21,8 @@ public static class CustomMenuItems
         MenuItem.CreateMenuItem(nameof(Grids), "description", controllerName),
         MenuItem.CreateMenuItem(nameof(Cards), "description", controllerName),
         MenuItem.CreateMenuItem(nameof(Tabs), "description", controllerName),
+        MenuItem.CreateMenuItem(nameof(DataTables), "description", controllerName),
+        MenuItem.CreateMenuItem(nameof(Dialogs), "description", controllerName),
         MenuItem.CreateMenuItem(nameof(Account), "description", controllerName)
     ]; 
 }

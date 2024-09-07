@@ -11,6 +11,7 @@ namespace SystemDot.Web.Razor.Mdc.TagHelpers
     {
         public required string Id { get; set; }
         public string? Name { get; set; }
+        public string? Value { get; set; }
         public string? Label { get; set; }
         public int Cols { get; set; }
         public int Rows { get; set; }
@@ -20,7 +21,7 @@ namespace SystemDot.Web.Razor.Mdc.TagHelpers
 
         public override void Process(TagHelperContext context, TagHelperOutput output)
         {
-            TagBuilder builder = TextAreaGenerator.GenerateTextArea(Id, Rows, Cols, Label, Name, For?.Model?.ToString(), Variant, Required);
+            TagBuilder builder = TextAreaGenerator.GenerateTextArea(Id, Rows, Cols, Label, Name, Value ?? For?.Model?.ToString(), Variant, Required);
             output.TagName = builder.TagName;
             output.MergeAttributes(builder);
             output.PostContent.AppendHtml(builder.InnerHtml);

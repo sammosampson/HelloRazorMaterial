@@ -5,58 +5,94 @@ namespace SystemDot.Web.Razor.Mdc.Generation
 {
     public class AppBarGenerator
     {
-        public static TagBuilder GenerateButton(string id, string? title, bool menu)
-        {
+        public static TagBuilder GenerateTopBar(string id, MdcAppBarType barType) {
             var builder = new TagBuilder("header");
             builder.Attributes.Add("id", id);
             builder.AddCssClass("mdc-top-app-bar");
-            builder.AddCssClass("mdc-top-app-bar--fixed");
-            builder.InnerHtml.SetHtmlContent(GenerateRow(title, menu));
+            switch (barType)
+            {
+                case MdcAppBarType.Fixed:
+                    builder.AddCssClass("mdc-top-app-bar--fixed");
+                    break;
+                case MdcAppBarType.Short:
+                    builder.AddCssClass("mdc-top-app-bar--short");
+                    break;
+            }
             return builder;
         }
 
-        private static IHtmlContent GenerateRow(string? title, bool menu)
-        {
+        public static TagBuilder GenerateTopBarRow() {
             var builder = new TagBuilder("div");
             builder.AddCssClass("mdc-top-app-bar__row");
-            builder.InnerHtml.SetHtmlContent(GenerateStartSection(title, menu));
             return builder;
         }
 
-        private static IHtmlContent GenerateStartSection(string? title, bool menu)
-        {
+        public static TagBuilder GenerateTopBarSection(MdcAppBarSectionAlignment alignment, bool toolbar) {
             var builder = new TagBuilder("section");
             builder.AddCssClass("mdc-top-app-bar__section");
-            builder.AddCssClass("mdc-top-app-bar__section--align-start");
+            switch (alignment) {
+                case MdcAppBarSectionAlignment.Start:
+                    builder.AddCssClass("mdc-top-app-bar__section--align-start");
+                    break;
+                case MdcAppBarSectionAlignment.End:
+                    builder.AddCssClass("mdc-top-app-bar__section--align-end");
+                    break;
+            }
+
+            if (toolbar) {
+                builder.Attributes.Add("role", "toolbar");
+            }
+            return builder;
+        }
+
+        public static TagBuilder GenerateTopBarTitle() {
+            var builder = new TagBuilder("span");
+            builder.AddCssClass("mdc-top-app-bar__title");
+            return builder;
+        }
+
+        public static TagBuilder GenerateSuccinctBar(string id, MdcAppBarType barType, string? title, bool menu)
+        {
+            TagBuilder builder = GenerateTopBar(id, barType);
+            builder.InnerHtml.SetHtmlContent(GenerateSuccinctRow(title, menu));
+            return builder;
+        }
+
+        private static IHtmlContent GenerateSuccinctRow(string? title, bool menu)
+        {
+            TagBuilder builder = GenerateTopBarRow();
+            builder.InnerHtml.SetHtmlContent(GenerateSuccinctStartSection(title, menu));
+            return builder;
+        }
+
+        private static IHtmlContent GenerateSuccinctStartSection(string? title, bool menu)
+        {
+            var builder = GenerateTopBarSection(MdcAppBarSectionAlignment.Start, false);
 
             var contentBuilder = new HtmlContentBuilder();
             if (menu)
             {
-                contentBuilder.AppendHtml(GenerateMenu());
+                contentBuilder.AppendHtml(GenerateSuccinctMenuButton());
             }
             if (title is not null)
             {
-                contentBuilder.AppendHtml(GenerateTitle(title));
+                contentBuilder.AppendHtml(GenerateSuccinctTitle(title));
             }
 
             builder.InnerHtml.SetHtmlContent(contentBuilder);
             return builder;
         }
 
-        private static IHtmlContent GenerateMenu()
+        private static IHtmlContent GenerateSuccinctMenuButton()
         {
-            var builder = new TagBuilder("button");
-            builder.AddCssClass("material-icons");
-            builder.AddCssClass("mdc-top-app-bar__navigation-icon");
-            builder.AddCssClass("mdc-icon-button");
+            var builder = ButtonGenerator.GenerateTopAppBarNavIconButton("menu", "menu", false, false, false);
             builder.InnerHtml.SetContent("menu");
             return builder;
         }
 
-        private static IHtmlContent GenerateTitle(string title)
+        private static IHtmlContent GenerateSuccinctTitle(string title)
         {
-            var builder = new TagBuilder("span");
-            builder.AddCssClass("mdc-top-app-bar__title");
+            var builder = GenerateTopBarTitle();
             builder.InnerHtml.SetContent(title);
             return builder;
         }

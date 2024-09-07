@@ -5,7 +5,7 @@ namespace SystemDot.Web.Razor.Mdc.Generation
 {
     public static class TabButtonGenerator
     {
-        public static TagBuilder GenerateTabButton(string id, string? name, string? label, string? icon, int index, bool selected, bool disabled)
+        public static TagBuilder GenerateTabButton(string id, string? name, string? value, string? label, string? icon, int index, bool selected, bool disabled)
         {
             var builder = new TagBuilder("button");
             builder.Attributes.Add("id", id);
@@ -16,8 +16,12 @@ namespace SystemDot.Web.Razor.Mdc.Generation
             if (name is not null)
             {
                 builder.Attributes.Add("name", name);
-                builder.Attributes.Add("value", index.ToString());
                 builder.Attributes.Add("type", "submit");
+            }
+
+            if(value is not null)
+            {
+                builder.Attributes.Add("value", value);
             }
 
             if (disabled)
