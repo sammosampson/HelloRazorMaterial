@@ -1,0 +1,24 @@
+﻿@using Microsoft.AspNetCore.Mvc.TagHelpers
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Razor MaterialCompontents Examples</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="~/css/site.default.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/site.custom.css" asp-append-version="true" />
+</head>
+<body translate="no">
+    <script src="https://unpkg.com/htmx.org@2.0.1"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
+    <div id="main" hx-boost="true">
+        @RenderBody()
+        @await RenderSectionAsync("Scripts", required: false)
+    </div>
+    <script src="~/js/site.default.js" asp-append-version="true"></script>
+    <script src="~/js/site.custom.js" asp-append-version="true"></script>
+</body>
+</html>
