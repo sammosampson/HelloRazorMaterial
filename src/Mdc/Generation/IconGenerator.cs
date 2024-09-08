@@ -26,6 +26,21 @@ namespace SystemDot.Web.Razor.Mdc.Generation
             return builder;
         }
 
+        public static TagBuilder GenerateDropdownIcon()
+        {
+            var iconBuilder = new TagBuilder("span");
+            iconBuilder.AddCssClass("mdc-select__dropdown-icon");
+
+            TagBuilder iconSvgBuilder = SvgGenerator.GenerateSelectDropdown();
+            var iconSvgContentBuilder = new HtmlContentBuilder();
+            iconSvgContentBuilder.AppendLine(SvgGenerator.GenerateSelectDropdownInactivePolygon());
+            iconSvgContentBuilder.AppendLine(SvgGenerator.GenerateSelectDropdownActivePolygon());
+            iconSvgBuilder.InnerHtml.SetHtmlContent(iconSvgContentBuilder);
+
+            iconBuilder.InnerHtml.SetHtmlContent(iconSvgBuilder);
+            return iconBuilder;
+        }
+
         private static TagBuilder GenerateIcon()
         {
             var builder = new TagBuilder("i");

@@ -5,14 +5,14 @@
             <form asp-controller="@nameof(Fields)">
                 <mdc-grid-inner>
                     <mdc-grid-cell span=12>
-                        <h5 class="mdc-typography--headline5">Outlined</h5>
+                        <mdc-typography type="Headline5">Outlined</mdc-typography>
                     </mdc-grid-cell>
                     <mdc-grid-cell span=12>
                         <mdc-text-field id="outlined-text-field"
-                                   for=@Model.TextValue
-                                   label="Plain text"
-                                   name=@nameof(Model.TextValue)
-                                   field-type=Text>
+                                        for=@Model.TextValue
+                                        label="Plain text"
+                                        name=@nameof(Model.TextValue)
+                                        field-type=Text>
                         </mdc-text-field>
                     </mdc-grid-cell>
 
@@ -104,7 +104,7 @@
                         <mdc-text-area id="outlined-text-area-field"
                                        for=@Model.TextAreaValue
                                        label="TextArea"
-                                       rows=8 
+                                       rows=8
                                        cols=40
                                        name=@nameof(Model.TextAreaValue)>
                         </mdc-text-area>
@@ -123,15 +123,15 @@
             <form asp-controller="@nameof(Fields)">
                 <mdc-grid-inner>
                     <mdc-grid-cell span=12>
-                        <h5 class="mdc-typography--headline5">Filled</h5>
+                        <mdc-typography type="Headline5">Filled</mdc-typography>
                     </mdc-grid-cell>
                     <mdc-grid-cell span=12>
                         <mdc-text-field id="filled-text-field"
-                                   label="Plain text"
-                                   field-type=Text
-                                   for=@Model.TextValue
-                                   name=@nameof(Model.TextValue)
-                                   variant=Filled>
+                                        label="Plain text"
+                                        field-type=Text
+                                        for=@Model.TextValue
+                                        name=@nameof(Model.TextValue)
+                                        variant=Filled>
                         </mdc-text-field>
                     </mdc-grid-cell>
 

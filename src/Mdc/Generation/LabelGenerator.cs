@@ -18,5 +18,12 @@ namespace SystemDot.Web.Razor.Mdc.Generation
             return labelBuilder;
         }
 
+        public static TagBuilder GenerateLabelFor(string @for, string label)
+        {
+            var labelBuilder = new TagBuilder("label");
+            labelBuilder.Attributes.Add("for", @for);
+            labelBuilder.InnerHtml.SetContent(label);
+            return labelBuilder;
+        }
     }
 }

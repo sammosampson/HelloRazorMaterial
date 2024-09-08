@@ -18,7 +18,9 @@ namespace SystemDot.Web.Razor.Mdc.Generation
 
             if (name != null)
             {
-                selectContentBuilder.AppendLine(InputGenerator.GenerateInput(id, name, value, MdcFieldType.Hidden, Enumerable.Empty<string>()));
+                TagBuilder inputBuider = InputGenerator.GenerateInput(name, value, MdcFieldType.Hidden, Enumerable.Empty<string>());
+                inputBuider.Attributes.Add("id", id);
+                selectContentBuilder.AppendLine(inputBuider);
             }
 
             selectContentBuilder.AppendLine(GenerateSelectAnchor(id, label, variant, value));
@@ -62,7 +64,7 @@ namespace SystemDot.Web.Razor.Mdc.Generation
             var selectAnchorContentBuilder = new HtmlContentBuilder();
             FieldGenerator.GenerateOutlineAndLabel(selectAnchorContentBuilder, id, label, variant, value);
             selectAnchorContentBuilder.AppendLine(GenerateSelectedTextContainer());
-            selectAnchorContentBuilder.AppendLine(GenerateDropdownIcon());
+            selectAnchorContentBuilder.AppendLine(IconGenerator.GenerateDropdownIcon());
             selectAnchorContentBuilder.AppendLine(RippleGenerator.GenerateLineRipple());
 
             selectAnchorBuilder.InnerHtml.SetHtmlContent(selectAnchorContentBuilder);
@@ -88,21 +90,6 @@ namespace SystemDot.Web.Razor.Mdc.Generation
             selectedTextBuilder.AddCssClass("mdc-select__selected-text");
             selectedTextContainerBuilder.InnerHtml.SetHtmlContent(selectedTextBuilder);
             return selectedTextContainerBuilder;
-        }
-
-        private static TagBuilder GenerateDropdownIcon()
-        {
-            var iconBuilder = new TagBuilder("span");
-            iconBuilder.AddCssClass("mdc-select__dropdown-icon");
-
-            TagBuilder iconSvgBuilder = SvgGenerator.GenerateSvg("mdc-select__dropdown-icon-graphic", "7 10 10 5");
-            var iconSvgContentBuilder = new HtmlContentBuilder();
-            iconSvgContentBuilder.AppendLine(SvgGenerator.GenerateSvgPolygon("mdc-select__dropdown-icon-inactive", "7 10 12 15 17 10"));
-            iconSvgContentBuilder.AppendLine(SvgGenerator.GenerateSvgPolygon("mdc-select__dropdown-icon-active", "7 15 12 10 17 15"));
-            iconSvgBuilder.InnerHtml.SetHtmlContent(iconSvgContentBuilder);
-
-            iconBuilder.InnerHtml.SetHtmlContent(iconSvgBuilder);
-            return iconBuilder;
         }
 
         private static TagBuilder GenerateSelectItems(IEnumerable<SelectListItem>? items, string? selectedItem)

@@ -24,7 +24,10 @@ namespace SystemDot.Web.Razor.Mdc.Generation
                 cssClasses.Add(cssClass);
             }
 
-            contentBuilder.AppendLine(InputGenerator.GenerateInput(id, name, value, fieldType, cssClasses, required));
+            TagBuilder inputBuilder = InputGenerator.GenerateInput(name, value, fieldType, cssClasses, required);
+            inputBuilder.Attributes.Add("id", id);
+            contentBuilder.AppendLine(inputBuilder);
+
             if (suffix is not null)
             {
                 contentBuilder.AppendLine(GenerateSuffix(suffix));

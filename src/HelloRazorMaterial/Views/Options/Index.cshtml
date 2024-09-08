@@ -1,0 +1,55 @@
+﻿@model OptionsModel
+<mdc-grid>
+    <mdc-grid-inner>
+        <mdc-grid-cell span=6>
+            <form asp-controller="@nameof(Options)">
+                <mdc-grid-inner>
+                    <mdc-grid-cell span=12>
+                        <mdc-typography type="Headline5">Contained</mdc-typography>
+                    </mdc-grid-cell>
+                    
+                    <mdc-grid-cell span=12>
+                        <mdc-checkbox id="contained-checkbox-1" for=@Model.CheckboxValue label="Checkbox 1"></mdc-checkbox>
+                    </mdc-grid-cell>
+
+                    <mdc-grid-cell span=12>
+                        <mdc-button id="contained-post" label="Post" ripple focus-ring>
+                        </mdc-button>
+                    </mdc-grid-cell>
+
+                </mdc-grid-inner>
+            </form>
+        </mdc-grid-cell>
+
+        <mdc-grid-cell span=6>
+            <form asp-controller="@nameof(Options)">
+                <mdc-grid-inner>
+                    <mdc-grid-cell span=12>
+                        <mdc-typography type="Headline5">Exploded</mdc-typography>
+                    </mdc-grid-cell>
+                    <mdc-grid-cell span=12>
+                        <mdc-form-field>
+                            <mdc-checkbox mode=Exploded>
+                                <mdc-checkbox-input id="exploded-checkbox-1" for=@Model.CheckboxValue></mdc-checkbox-input>
+                                <mdc-checkbox-background>
+                                    <mdc-checkbox-checkmark-svg>
+                                        <mdc-checkbox-checkmark-svg-path></mdc-checkbox-checkmark-svg-path>
+                                    </mdc-checkbox-checkmark-svg>
+                                    <mdc-checkbox-mixedmark></mdc-checkbox-mixedmark>
+                                </mdc-checkbox-background>
+                                <mdc-checkbox-ripple></mdc-checkbox-ripple>
+                            </mdc-checkbox>
+                            <label for="exploded-checkbox-1">Checkbox 1</label>
+                        </mdc-form-field>
+                    </mdc-grid-cell>
+
+                    <mdc-grid-cell span=12>
+                        <mdc-button id="exploded-post" label="Post" button-type=Raised ripple focus-ring>
+                        </mdc-button>
+                    </mdc-grid-cell>
+
+                </mdc-grid-inner>
+            </form>
+        </mdc-grid-cell>
+    </mdc-grid-inner>
+</mdc-grid>

@@ -10,6 +10,7 @@
         Date,
         LocalDate,
         Telephone,
-        Hidden
+        Hidden,
+        Checkbox
     }
 }

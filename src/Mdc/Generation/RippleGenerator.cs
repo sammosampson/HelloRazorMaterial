@@ -60,5 +60,12 @@ namespace SystemDot.Web.Razor.Mdc.Generation
             fabRippleBuilder.AddCssClass("mdc-tab__ripple");
             return fabRippleBuilder;
         }
+
+        internal static TagBuilder GenerateCheckboxRipple()
+        {
+            var fabRippleBuilder = new TagBuilder("div");
+            fabRippleBuilder.AddCssClass("mdc-checkbox__ripple");
+            return fabRippleBuilder;
+        }
     }
 }

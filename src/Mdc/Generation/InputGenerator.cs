@@ -1,69 +1,92 @@
 ﻿using Microsoft.AspNetCore.Html;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.AspNetCore.Mvc.ViewFeatures;
 
 namespace SystemDot.Web.Razor.Mdc.Generation
 {
     public static class InputGenerator
     {
-        public static TagBuilder GenerateInput(string id, string? name, string? value, MdcFieldType fieldType, IEnumerable<string> cssClasses, bool required = false)
+        public static TagBuilder GeneratTextArea(string id, int rows, int cols, string? label, string? name, string? value, bool required = false)
         {
-            var hiddenInputBuilder = new TagBuilder("input");
-            hiddenInputBuilder.Attributes.Add("id", id);
-            hiddenInputBuilder.Attributes.Add("type", GetFieldTypeName(fieldType));
+            var builder = new TagBuilder("textarea");
+            builder.Attributes.Add("id", id);
+            builder.Attributes.Add("rows", rows.ToString());
+            builder.Attributes.Add("cols", cols.ToString());
 
             if (name != null)
             {
-                hiddenInputBuilder.Attributes.Add("name", name);
+                builder.Attributes.Add("name", name);
             }
 
             if (value != null)
             {
-                hiddenInputBuilder.Attributes.Add("value", value);
+                builder.InnerHtml.SetContent(value);
             }
+
+            builder.AddCssClass("mdc-text-field__input");
+
+            if (label != null)
+            {
+                builder.Attributes.Add("aria-label", label);
+            }
+
+            if (required)
+            {
+                builder.Attributes.Add("required", "true");
+            }
+
+            return builder;
+        }
+
+        public static TagBuilder GenerateCheckbox(ModelExpression? @for)
+        {
+            TagBuilder tagBuilder = GenerateInput(MdcFieldType.Checkbox, ["mdc-checkbox__native-control"]);
+
+            if (@for is not null)
+            {
+                tagBuilder.Attributes.Add("name", @for!.Name);
+                tagBuilder.Attributes.Add("value", "true");
+
+                bool isChecked = (bool)@for.Model;
+                if (isChecked)
+                {
+                    tagBuilder.Attributes.Add("checked", "");
+                }
+            }
+
+            return tagBuilder;
+        }
+
+        public static TagBuilder GenerateInput(string? name, string? value, MdcFieldType fieldType, IEnumerable<string> cssClasses, bool required = false)
+        {
+            TagBuilder inputBuilder = GenerateInput(fieldType, cssClasses);
+
+            if (name != null)
+            {
+                inputBuilder.Attributes.Add("name", name);
+            }
+
+            if (value != null)
+            {
+                inputBuilder.Attributes.Add("value", value);
+            }
+
+            if (required)
+            {
+                inputBuilder.Attributes.Add("required", "true");
+            }
+
+            return inputBuilder;
+        }
+
+        private static TagBuilder GenerateInput(MdcFieldType fieldType, IEnumerable<string> cssClasses)
+        {
+            var hiddenInputBuilder = new TagBuilder("input");
+            hiddenInputBuilder.Attributes.Add("type", GetFieldTypeName(fieldType));
 
             foreach (string cssClass in cssClasses)
             {
                 hiddenInputBuilder.AddCssClass(cssClass);
-            }
-
-            if (required)
-            {
-                hiddenInputBuilder.Attributes.Add("required", "true");
-            }
-
-            return hiddenInputBuilder;
-        }
-
-        public static TagBuilder GeneratTextArea(string id, int rows, int cols, string? label, string? name, string? value, string? cssClass = null, bool required = false)
-        {
-            var hiddenInputBuilder = new TagBuilder("textarea");
-            hiddenInputBuilder.Attributes.Add("id", id);
-            hiddenInputBuilder.Attributes.Add("rows", rows.ToString());
-            hiddenInputBuilder.Attributes.Add("cols", cols.ToString());
-
-            if (name != null)
-            {
-                hiddenInputBuilder.Attributes.Add("name", name);
-            }
-
-            if (value != null)
-            {
-                hiddenInputBuilder.InnerHtml.SetContent(value);
-            }
-
-            if (cssClass != null)
-            {
-                hiddenInputBuilder.AddCssClass(cssClass);
-            }
-
-            if (label != null)
-            {
-                hiddenInputBuilder.Attributes.Add("aria-label", label);
-            }
-
-            if (required)
-            {
-                hiddenInputBuilder.Attributes.Add("required", "true");
             }
 
             return hiddenInputBuilder;
@@ -89,6 +112,8 @@ namespace SystemDot.Web.Razor.Mdc.Generation
                     return "datetime-local";
                 case MdcFieldType.Telephone:
                     return "tel";
+                case MdcFieldType.Checkbox:
+                    return "checkbox";
                 case MdcFieldType.Hidden:
                     return "hidden";
             }

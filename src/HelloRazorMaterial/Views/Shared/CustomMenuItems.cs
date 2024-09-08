@@ -2,6 +2,7 @@ using HelloRazorMaterial.Controllers.Banners;
 using HelloRazorMaterial.Controllers.Buttons;
 using HelloRazorMaterial.Controllers.Cards;
 using HelloRazorMaterial.Controllers.Fields;
+using HelloRazorMaterial.Controllers.Options;
 using HelloRazorMaterial.Controllers.Text;
 using HelloRazorMaterial.Controllers.Grids;
 using HelloRazorMaterial.Controllers.Tabs;
@@ -17,6 +18,7 @@ public static class CustomMenuItems
     [
         MenuItem.CreateMenuItem(nameof(Charts), "trending_up", controllerName),
         MenuItem.CreateMenuItem(nameof(Fields), "description", controllerName),
+        MenuItem.CreateMenuItem(nameof(Options), "description", controllerName),
         MenuItem.CreateMenuItem(nameof(Banners), "description", controllerName),
         MenuItem.CreateMenuItem(nameof(Buttons), "description", controllerName),
         MenuItem.CreateMenuItem(nameof(Text), "description", controllerName),

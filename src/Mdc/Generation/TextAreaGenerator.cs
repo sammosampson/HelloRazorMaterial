@@ -20,7 +20,7 @@ namespace SystemDot.Web.Razor.Mdc.Generation
         {
             TagBuilder builder = new TagBuilder("span");
             builder.AddCssClass("mdc-text-field__resizer");
-            builder.InnerHtml.SetHtmlContent(InputGenerator.GeneratTextArea(id, rows, cols, label, name, value, "mdc-text-field__input", required));
+            builder.InnerHtml.SetHtmlContent(InputGenerator.GeneratTextArea(id, rows, cols, label, name, value, required));
             return builder;
         }
     }           

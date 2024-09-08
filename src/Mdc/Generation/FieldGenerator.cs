@@ -4,8 +4,15 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 namespace SystemDot.Web.Razor.Mdc.Generation
 {
     public static class FieldGenerator
-    {
-        public static TagBuilder GenerateFieldContainer(string? label, MdcVariant variant)
+        {
+            public static TagBuilder GenerateFormField()
+            {
+                var builder = new TagBuilder("div");
+                builder.AddCssClass("mdc-form-field");
+                return builder;
+            }
+
+            public static TagBuilder GenerateFieldContainer(string? label, MdcVariant variant)
         {
             var builder = new TagBuilder("label");
             if (label == null)
